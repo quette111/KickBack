@@ -180,8 +180,8 @@ h1{
 
 header ul {
   display: flex;
-  flex-wrap: wrap;   /* allows wrapping on small screens */
-  justify-content: center; /* or space-between, flex-end, etc. */
+  flex-wrap: wrap;  
+  justify-content: center; 
   padding: 0;
   margin: 0;
   list-style: none;
@@ -189,7 +189,7 @@ header ul {
 
 header ul li {
   margin: 10px 15px;
-  font-size: 1rem; /* scales better than fixed px */
+  font-size: 1rem; 
   cursor: pointer;
 }
 

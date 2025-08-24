@@ -75,7 +75,7 @@ const Hero = () => {
 
 /*
 function Greeting() {
-    return React.createElement('h2', {}, 'hello nigga')
+    return React.createElement('h2', {}, 'hello ')
 }
 */
 
