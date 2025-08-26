@@ -1,8 +1,6 @@
-
-<img width="1422" height="763" alt="Screenshot 2025-08-25 at 10 39 14 PM" src="https://github.com/user-attachments/assets/c29cb8f5-a7fc-4ea3-9d6d-39db48c1ad48" />
-<br>
 **NOTE: CURRENT PRODUCT LISTINGS ARE NOT MY OWN AND WILL NOT BE USED IN PRODUCTION, WILL BE REPLACED**
-<br>
+<img width="1422" height="763" alt="Screenshot 2025-08-25 at 10 39 14 PM" src="https://github.com/user-attachments/assets/c29cb8f5-a7fc-4ea3-9d6d-39db48c1ad48" />
+
 <img width="1431" height="776" alt="Screenshot 2025-08-26 at 2 35 24 PM" src="https://github.com/user-attachments/assets/a8567e10-bd63-42e9-a88c-fa6b07b6a4cf" />
 
 # KickBack (WIP)
