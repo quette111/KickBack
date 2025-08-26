@@ -23,3 +23,4 @@ A MERN stack web application built with **Vite** for fast frontend development. 
 - **Database:** MongoDB, Mongoose > Will migrate to SQL after MVP is complete
 - **Auth:** JSON Web Tokens (JWT), OAuth 2.0 
 
+**NOTE: CURRENT PRODUCT LISTINGS ARE NOT MY OWN AND WILL NOT BE USED IN PRODUCTION, WILL BE REPLACED**
