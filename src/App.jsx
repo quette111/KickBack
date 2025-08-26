@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 
 import { products } from "./Products";
+import { genderData } from "./genderCardData";
 import { IndividualProductCard } from "./ProductCard";
+import { GenderCard } from "./genderCards";
 import { Header } from "./header";
 
 import redirect from "./images/redirect.png";
@@ -16,6 +18,12 @@ const App = () => {
     const products = products.find((productItem) => productItem.id === id);
   };
 
+  const getGender = (id) => {
+    const genderData = genderData.find(
+      (genderOption) => genderOption.id === id
+    );
+  };
+
   return (
     <>
       <div className="headerContainer">
@@ -24,8 +32,7 @@ const App = () => {
 
       <Hero />
 
-    <FeaturesListHeader />
-
+      <FeaturesListHeader />
 
       <section className="productList">
         {/*<EventExamples></EventExamples>*/}
@@ -39,6 +46,20 @@ const App = () => {
                 index={index}
               ></IndividualProductCard>
             </Link>
+          );
+        })}
+      </section>
+
+        <h1 className="componentCaption">Shop By Category</h1>
+      <section className="genderArea">
+        {genderData.map((genderData, index) => {
+          return (
+            <GenderCard
+              key={genderData.id}
+              {...genderData}
+              getGender={getGender}
+              index={index}
+            ></GenderCard>
           );
         })}
       </section>
@@ -137,16 +158,28 @@ const FeaturesListHeader = () => {
       <h1>Top Picks</h1>
 
       <div role="group" aria-label="carousel navigation">
-        <button className="scrollButton" id="scrollLeft" onClick={scroll} aria-label="Previous">
+        <button
+          className="scrollButton"
+          id="scrollLeft"
+          onClick={scroll}
+          aria-label="Previous"
+        >
           <img alt="" src={arrowBackward} />
         </button>
-        <button className="scrollButton"  id="scrollRight" onClick={scroll} aria-label="Next">
+        <button
+          className="scrollButton"
+          id="scrollRight"
+          onClick={scroll}
+          aria-label="Next"
+        >
           <img alt="" src={arrowForward} />
         </button>
       </div>
     </div>
   );
 }
+
+
 
 
 /*

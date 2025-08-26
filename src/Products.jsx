@@ -4,6 +4,7 @@ import img3 from './images/nb9060.webp'
 import img4 from './images/samba.webp'
 import img5 from './images/aOH.webp'
 import img6 from "./images/airmax.png";
+
 export const products = [
   {
     price: "$150.00",
