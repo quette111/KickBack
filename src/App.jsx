@@ -93,15 +93,54 @@ const Hero = () => {
 
 
 const FeaturesListHeader = () => {
+
+  const scroll = (e) => {
+    if (e.currentTarget.className !== "scrollButton") return;
+
+    const productList = document.querySelector(".productList");
+    if (!productList) return;
+
+    const children = Array.from(productList.children);
+    const scrollLeft = productList.scrollLeft;
+
+    let currentIndex;
+
+    if (e.currentTarget.id === "scrollRight") {
+      // first child whose left edge is at or beyond current scrollLeft
+      currentIndex = children.findIndex(
+        (child) => child.offsetLeft >= scrollLeft
+      );
+      const targetIndex = Math.min(currentIndex + 1, children.length - 1);
+
+      children[targetIndex]?.scrollIntoView({
+        behavior: "smooth",
+        inline: "start",
+        block: "nearest",
+      });
+    } else {
+      currentIndex =
+        children.findLastIndex(
+          (child) => child.offsetLeft + child.offsetWidth <= scrollLeft + 1
+        ) ?? 0;
+      const targetIndex = Math.max(currentIndex, 0);
+
+      children[targetIndex]?.scrollIntoView({
+        behavior: "smooth",
+        inline: "start",
+        block: "nearest",
+      });
+    }
+  };
+
   return (
     <div className="header-row">
       <h1>Top Picks</h1>
 
       <div role="group" aria-label="carousel navigation">
-        <button aria-label="Previous">
+        <button className="scrollButton" id="scrollLeft" onClick={scroll} aria-label="Previous">
           <img alt="" src={arrowBackward} />
         </button>
-        <button aria-label="Next">
+        <button className="scrollButton"  id="scrollRight" onClick={scroll} aria-label="Next">
           <img alt="" src={arrowForward} />
         </button>
       </div>
