@@ -4,7 +4,10 @@ import { products } from "./Products";
 import { IndividualProductCard } from "./ProductCard";
 import { Header } from "./header";
 
+import redirect from "./images/redirect.png";
 import nike from "./images/heroSneaker.png";
+import arrowForward from "./images/arrowF.png";
+import arrowBackward from "./images/arrowB.png"
 
 import "./index.css";
 
@@ -20,6 +23,9 @@ const App = () => {
       </div>
 
       <Hero />
+
+    <FeaturesListHeader />
+
 
       <section className="productList">
         {/*<EventExamples></EventExamples>*/}
@@ -66,12 +72,43 @@ const EventExamples = () => {
 const Hero = () => {
   return (
     <section className="hero">
+      <div>
+        <h1>
+          Hot kicks,<br></br> cooler prices
+        </h1>
+        <h3>
+          Stay fresh this year with the hottest<br></br> trends and must-have styles
+        </h3>
+   
+          <button className="headerRedirect">Shop The Top Picks</button>
+      
+      </div>
+
       <img alt="nike" src={nike} className="heroShoeImg"></img>
       {/*<img></img>
         <img></img>*/}
     </section>
   );
 };
+
+
+const FeaturesListHeader = () => {
+  return (
+    <div className="header-row">
+      <h1>Top Picks</h1>
+
+      <div role="group" aria-label="carousel navigation">
+        <button aria-label="Previous">
+          <img alt="" src={arrowBackward} />
+        </button>
+        <button aria-label="Next">
+          <img alt="" src={arrowForward} />
+        </button>
+      </div>
+    </div>
+  );
+}
+
 
 /*
 function Greeting() {

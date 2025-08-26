@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,800;1,800&family=Outfit&display=swap');
+
+
 *{
   margin: 0;
   padding: 0;
@@ -29,6 +32,8 @@ body{
   display: flex;
   gap: 2rem;
   overflow-x: scroll;
+  margin-top: 1%;
+
 
 }
 
@@ -53,7 +58,7 @@ body{
   text-align: center;
   position: relative;
   flex: 1;
-  min-width: 200px;
+  min-width: 205px;
   height: 285px;
   overflow-y: hidden;
   cursor: pointer;
@@ -70,6 +75,7 @@ body{
 .productCard img{
   width: 100%;
   object-fit: cover;
+
 }
 
 .productCard h2{
@@ -158,7 +164,7 @@ h1{
 
 .headerContainer{
   width: 100%;
-  min-height: 10vh;
+  min-height: 10%;
   background: #968e8e;
   
 }
@@ -205,10 +211,30 @@ header ul li {
   padding: 6px;
   background: transparent;
   border: 0;
+  flex-grow: 1;
+  min-width: 0;
   outline: 0;
   color: white;
   font-size: 18px;
   max-width: 200px;
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  .search-box input {
+    width: 100px;
+    font-size: 16px;
+  }
+
+}
+
+@media (max-width: 480px) {
+  .search-box input {
+    padding: 4px; 
+    font-size: 14px; 
+  }
+
+  
 }
 
 .search-box input::placeholder{
@@ -223,16 +249,41 @@ header ul li {
 
 .hero {
   width: 100%;
-  height: 70vh;
+  height: 400px;
   background: url('./images/hero.png') no-repeat center center/cover;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   padding-right: 10%;
 }
 
+.hero h1 {
+  margin-left: 5rem;
+  font-family: "Exo 2", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+  color: white;
+  text-align: left;
+  font-size: 300%;
+}
 
+.hero h3 {
+  margin-left: 5rem;
+  font-family: "Exo 2", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+  color: white;
+  text-align: left;
+  font-size: 90%;
+}
 
+.hero div {
+  height: 100%;
+  margin-top: 10%;
+  
+}
 .hero img{
   
  width: 25%;
@@ -249,7 +300,91 @@ header ul li {
   
 }
 
+
 a { 
    text-decoration: none;
    color: inherit;
 }
+
+.header-row {
+  font-family: "Exo 2", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+  font-size: small;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 5rem;
+  margin-right: 5%;
+}
+
+.header-row [role="group"] {
+  display: flex;
+  gap: 0.5rem; /* space between buttons */
+}
+
+.header-row button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.header-row button:hover {
+  background-color: rgba(201, 201, 201, 0.703);
+  padding: 10%;
+  border-radius: 50px;
+
+}
+
+.headerRedirect {
+  margin-left: 5rem;
+  width: 10rem;
+  cursor: pointer;
+  margin-top: 2%;
+  border-radius:0;
+  border: 1px solid rgb(255, 255, 255);
+  background: #ffffffe2;
+  color: #000;
+  height: 5.5%;
+}
+
+
+@media (max-width: 768px) {
+  .hero {
+    height: 250px;
+  }
+
+  .hero img{
+  
+    width: 35%;
+   }
+
+   .hero h1 {
+    font-size: 170%;
+    margin-left: 2rem;
+   }
+
+   .hero h3 {
+    font-size: 73%;
+    margin-left: 2rem;
+   }
+
+   .header-row {
+    font-size: 70%;
+    margin-left: 1rem;
+   }
+    .header-row button {
+  display: none;
+  }
+
+  .productList {
+    margin-left: 1rem;
+  }
+
+  .headerRedirect {
+    margin-left: 2rem;
+  
+  }
+}
+

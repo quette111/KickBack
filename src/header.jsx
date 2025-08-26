@@ -1,4 +1,4 @@
-import logo from "./images/logo.png";
+import logo from "./images/headerLogo.png";
 import searchIcon from "./images/searchIcon.svg";
 import "./index.css";
 import { Link } from "react-router-dom";
@@ -17,7 +17,7 @@ export const Header = () => {
 
       <div className="search-box">
         <input type="text" placeholder="Search" />
-        <img src={searchIcon} alt="" />
+        <img src={searchIcon} alt="search" />
       </div>
 
       <img src="" alt="" className="toggle-icon" />
