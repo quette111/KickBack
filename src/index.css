@@ -38,13 +38,28 @@ body{
 
 }
 
-.GenderCardWrapper {
+.GenderCardWrapper, .ShopNowWrapper {
   display: flex;
   flex-direction: column;
   align-items: flex-start; 
 }
 
+.ShopNowWrapper {
 
+
+  display: flex; /* Ensure it's a flex container */
+  flex-direction: column;
+  justify-content: center; /* Centers items vertically */
+  align-items: center; /* Centers items horizontally */
+
+}
+.ShopNowArea {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 1170px;
+  margin: 1% auto;
+}
 .genderArea {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -52,6 +67,27 @@ body{
   max-width: 1170px;
   margin: 1% auto;
 }
+
+.ShopNowCard{
+ 
+
+margin-top: 5rem;
+margin-bottom: 5rem;
+    overflow: hidden;
+    justify-content: center;
+    cursor: pointer;
+    width: 100%;
+    max-width: 570px;   
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    aspect-ratio: 5 / 5; 
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  
+}
+
+
 
 .GenderCard {
 
@@ -76,6 +112,17 @@ body{
   border-color:  hsl(0, 87%, 47%);
 }
 
+.ShopNowCard img{
+  font-family: "Exo 2", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+  width: 100%;
+  height: 100%;   
+ 
+  object-fit: cover;
+}
+
 .GenderCard img {
   font-family: "Exo 2", sans-serif;
   font-optical-sizing: auto;
@@ -87,12 +134,138 @@ body{
   object-fit: cover;
 }
 
-.GenderCardWrapper h2 {
+.navbar li {
+  display: inline-block; /* needed for nicer clipping/spacing */
+
+  cursor: pointer;
+
+  /* two layers: top = hover color, bottom = base color */
+  background-image:
+    linear-gradient(#c33, #c33),        /* hover color (red) */
+    linear-gradient(#4b2b20, #4b2b20);  /* base color (brown) */
+
+  background-size: 100% 0%, 100% 100%;  /* top layer hidden initially */
+  background-position: 0 100%, 0 0;     /* anchor top layer at bottom */
+  background-repeat: no-repeat;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;                   /* show gradient through the text */
+
+  transition: background-size .28s ease;
+}
+
+.navbar li:hover,
+.navbar li:focus {
+  background-size: 100% 100%, 100% 100%; /* expand the top layer upward */
+}
+
+/* reduced-motion fallback */
+@media (prefers-reduced-motion: reduce) {
+  .navbar li { transition: none; }
+  .navbar li:hover { background-size:100% 100%, 100% 100%; }
+}
+
+
+.GenderCardWrapper .gender-title {
+  display: inline-block;        
+  padding: 0.4rem 0.6rem;
   font-size: 1rem;
   font-weight: 500;
   color: #333;
-  margin-top: 0.5rem;
+  cursor: pointer;
+  margin-top: 1%;
+  background-image: linear-gradient(180deg, #000, #000);
+  background-size: 100% 0%; 
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+
+  transition: background-size .28s cubic-bezier(.2,.9,.2,1), color .18s ease;
+  -webkit-background-clip: padding-box; 
 }
+
+
+.GenderCardWrapper .gender-title:hover,
+.GenderCardWrapper .gender-title:focus {
+  background-size: 100% 100%;
+  color: #fff;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .GenderCardWrapper .gender-title {
+    transition: none;
+    background-size: 100% 100%;
+    color: #fff;
+  }
+}
+
+.headerRedirect {
+  margin-left: 5rem;
+  width: 10rem;
+  cursor: pointer;
+  margin-top: 2%;
+  
+  border-radius:0;
+  border: 1px solid rgb(255, 255, 255);
+  background: #ffffffe2;
+  color: #000;
+  height: 5.5%;
+  display: inline-block;
+  background-image: linear-gradient(180deg, #000, #000);
+  background-size: 100% 0%; 
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size .28s cubic-bezier(.2,.9,.2,1), color .18s ease;
+  -webkit-background-clip: padding-box;
+}
+
+.hoverButton {
+  display: inline-block;        
+ 
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+  background: #ffffffe2;
+  z-index: 10;
+  cursor: pointer;
+  margin-top: 1%;
+  background-image: linear-gradient(180deg, #000, #000);
+  background-size: 100% 0%; 
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  position: relative;
+bottom: 50%;
+text-align: center;
+  width: 13rem;
+  
+  border: 1px solid rgb(255, 255, 255);
+
+  height: 3%;
+
+
+
+  transition: background-size .28s cubic-bezier(.2,.9,.2,1), color .18s ease;
+  -webkit-background-clip: padding-box;
+   
+}
+
+.hoverButton:hover,
+.hoverButton:focus, .headerRedirect:hover,
+.headerRedirect:focus  {
+  background-size: 100% 100%;
+  color: #fff;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .headerRedirect  {
+    transition: none;
+    background-size: 100% 100%;
+    color: #fff;
+  }
+}
+
 
 
 @media (max-width: 768px) {
@@ -258,6 +431,15 @@ h1{
 
 
 .footer {
+margin-top: 15%;
+display: flex;
+align-items: center;
+justify-content: space-around;
+}
+
+.createdBy h1 {
+font-size: medium;
+
 
 }
 
@@ -445,17 +627,7 @@ a {
 
 }
 
-.headerRedirect {
-  margin-left: 5rem;
-  width: 10rem;
-  cursor: pointer;
-  margin-top: 2%;
-  border-radius:0;
-  border: 1px solid rgb(255, 255, 255);
-  background: #ffffffe2;
-  color: #000;
-  height: 5.5%;
-}
+
 
 
 @media (max-width: 768px) {

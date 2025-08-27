@@ -6,6 +6,8 @@ import { IndividualProductCard } from "./ProductCard";
 import { GenderCard } from "./genderCards";
 import { Header } from "./header";
 import { Footer } from "./footer";
+import { ShopNow } from "./genderCards";
+import { ShopNowData } from "./genderCardData";
 
 import redirect from "./images/redirect.png";
 import nike from "./images/heroSneaker.png";
@@ -24,6 +26,14 @@ const App = () => {
       (genderOption) => genderOption.id === id
     );
   };
+
+  const getShopNow = (id) => {
+    const getShopNowData = getShopNowData.find(
+      (shopNowOption) =>shopNowOption.id === id
+    );
+  };
+
+  ;
 
   return (
     <>
@@ -51,7 +61,7 @@ const App = () => {
         })}
       </section>
 
-        <h1 className="componentCaption">Shop By Category</h1>
+      <h1 className="componentCaption">Shop By Category</h1>
       <section className="genderArea">
         {genderData.map((genderData, index) => {
           return (
@@ -64,7 +74,20 @@ const App = () => {
           );
         })}
       </section>
-      <span className="triangle-down-gradient"></span>
+
+      <section className="ShopNowArea">
+        {ShopNowData.map((ShopNowData, index) => {
+          return (
+            <ShopNow
+              key={ShopNowData.id}
+              {...ShopNowData}
+              getShopNow={getShopNow}
+              index={index}
+            ></ShopNow>
+          );
+        })}
+      </section>
+
       <Footer></Footer>
     </>
   );
@@ -130,7 +153,7 @@ const FeaturesListHeader = () => {
     let currentIndex;
 
     if (e.currentTarget.id === "scrollRight") {
-      // first child whose left edge is at or beyond current scrollLeft
+
       currentIndex = children.findIndex(
         (child) => child.offsetLeft >= scrollLeft
       );

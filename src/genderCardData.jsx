@@ -4,6 +4,8 @@ import mens from "../src/images/MaleModel.jpg";
 import kids from "../src/images/kidsModel.jpg"
 import other from "../src/images/otherSneakers.jpg";
 
+import necklace from "../src/images/necklace.jpg"
+import jacket from "../src/images/jacket.jpg";
 export const genderData = [
   {
     category: "Men's",
@@ -26,3 +28,18 @@ export const genderData = [
     id: 4,
   },
 ];
+
+
+export const ShopNowData = [
+  {
+    category: "Shop Thrifted Clothing",
+    shopNowImg: jacket,
+    id: 1,
+  },
+  {
+    category: "Shop Fresh Jewelry",
+    shopNowImg: necklace,
+    id: 2,
+  }
+];
+  
