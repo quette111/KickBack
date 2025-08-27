@@ -8,11 +8,13 @@ export const Header = () => {
       <img src={logo} alt="" className="headerLogo" />
 
       <ul>
-
-         <Link to={'/'}> <li>Home</li> </Link>
-        <li>Products</li>
-        <li>Stuff</li>
-        <li>More</li>
+        <Link to={"/"}>
+          {" "}
+          <li>Home</li>{" "}
+        </Link>
+        <li>Men's</li>
+        <li>Women's</li>
+        <li>Kid's</li>
       </ul>
 
       <div className="search-box">

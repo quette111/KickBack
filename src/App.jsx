@@ -5,6 +5,7 @@ import { genderData } from "./genderCardData";
 import { IndividualProductCard } from "./ProductCard";
 import { GenderCard } from "./genderCards";
 import { Header } from "./header";
+import { Footer } from "./footer";
 
 import redirect from "./images/redirect.png";
 import nike from "./images/heroSneaker.png";
@@ -63,6 +64,8 @@ const App = () => {
           );
         })}
       </section>
+      <span className="triangle-down-gradient"></span>
+      <Footer></Footer>
     </>
   );
 };
