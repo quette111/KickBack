@@ -271,6 +271,15 @@ h1{
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.navbarRight {
+  position: absolute;
+  right: 0;
+ padding: 0.9%;
+ padding-left: 0.70%;
+border: lightgray solid 1px;;
+  border-radius: 50px;
+}
+
 .headerLogo{
   width: 100px;
   cursor: pointer;
@@ -307,9 +316,15 @@ header ul li {
   min-width: 0;
   outline: 0;
   color: white;
-  font-size: 18px;
+  font-size: 13px;
   max-width: 200px;
   overflow-x: hidden;
+}
+
+.cartIcon {
+  background: rgba(0, 0, 255, 0.475);
+  border-radius: 5px;
+ 
 }
 
 @media (max-width: 768px) {
