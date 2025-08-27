@@ -7,11 +7,12 @@ import img6 from "./images/airmax.png";
 
 export const products = [
   {
-    price: "$150.00",
-    title: "New Balance 9060",
+    price: "$180.00",
+    brand: "Nike",
+    title: "Air Max Plus",
     img: img6,
     id: 1,
-  },
+  }/*,
   {
     price: "$100.00",
     title: "adidas Originals Samba OG",
@@ -59,5 +60,5 @@ export const products = [
     title: "adidas Originals Handball Spezial",
     img: img5,
     id: 5,
-  },
+  },*/
 ];

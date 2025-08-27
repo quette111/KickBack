@@ -22,6 +22,7 @@ const ProductPage = () => {
       </div>
 
       <IndividualProductListing
+      brand={product.brand}
         title={product.title}
         img={product.img}
         price={product.price}
@@ -31,13 +32,18 @@ const ProductPage = () => {
 };
 
 
-const IndividualProductListing = ({ title, img, price, children }) => {
+const IndividualProductListing = ({brand, title, img, price, children }) => {
   return (
     <article className="productListing">
+    <div>
       <img alt={title} src={img} />
+      </div>
+      <div className="productDescription">
+    <h2 className="airMaxTag">EXCLUSIVE</h2>
+      <h1>{brand}</h1>
       <h2>{title}</h2>
       <h6>Men's</h6>
-      <h4>{price}</h4>
+      <h4>{price}</h4></div>
       {children}
     </article>
   );

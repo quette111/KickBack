@@ -589,6 +589,31 @@ header ul li {
   
 }
 
+.airMaxTag {
+  background: linear-gradient(135deg, #ADE5CC 0%, #EEE6C2 18%, #EEE6C2 33%, #E8C1CE 57%, #B7A3D7 72%, #B6C9E0 94%);
+
+}
+
+.productListing {
+  display: flex;
+  margin-left: 5%;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 10%;
+  
+}
+
+.productListing img {
+  background: rgba(211, 211, 211, 0.782);
+  padding: 2rem;
+
+}
+
+
+.productDescription {
+  margin-right: 5%;
+
+}
 
 a { 
    text-decoration: none;
