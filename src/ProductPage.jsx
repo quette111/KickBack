@@ -2,6 +2,7 @@ import { Header } from "./header";
 import "./index.css";
 import { useParams } from "react-router-dom";
 import { products } from "./Products";
+import { Footer } from "./footer";
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -27,6 +28,7 @@ const ProductPage = () => {
         img={product.img}
         price={product.price}
       />
+      <Footer></Footer>
     </>
   );
 };
@@ -35,16 +37,23 @@ const ProductPage = () => {
 const IndividualProductListing = ({brand, title, img, price, children }) => {
   return (
     <article className="productListing">
-    <div>
-      <img alt={title} src={img} />
+      <div>
+        <img alt={title} src={img} />
       </div>
       <div className="productDescription">
-    <h2 className="airMaxTag">EXCLUSIVE</h2>
-    <SizeDropdown></SizeDropdown>
-      <h1>{brand}</h1>
-      <h2>{title}</h2>
-      <h6>Men's</h6>
-      <h4>{price}</h4></div>
+        <h2 className="airMaxTag">EXCLUSIVE</h2>
+       
+        <h1>{brand}</h1>
+        <h2>{title}</h2>
+        <h6>Men's</h6>
+        <h4>{price}</h4> <SizeDropdown></SizeDropdown>
+        <div className="checkoutButtons">
+          <button className="addToBagButton">Add To Bag</button>
+          <button className="wishlistButton">
+            Wishlist <span class="heart">&hearts;</span>
+          </button>
+        </div>
+      </div>
       {children}
     </article>
   );
