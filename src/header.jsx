@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 
 export const Header = () => {
   return (
+    <>
+  
     <header className="navbar">
       <img src={logo} alt="" className="headerLogo" />
 
@@ -32,6 +34,6 @@ export const Header = () => {
 </div>
 
       <img src="" alt="" className="toggle-icon" />
-    </header>
+    </header></>
   );
 };

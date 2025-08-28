@@ -27,6 +27,7 @@ const App = () => {
 
   return (
     <>
+     
       <div className="headerContainer">
         <Header></Header>
       </div>
@@ -51,7 +52,7 @@ const App = () => {
         })}
       </section>
 
-        <h1 className="componentCaption">Shop By Category</h1>
+      <h1 className="componentCaption">Shop By Category</h1>
       <section className="genderArea">
         {genderData.map((genderData, index) => {
           return (
