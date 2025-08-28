@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import { products } from "./Products";
 import { Footer } from "./footer";
 
+
+
 const ProductPage = () => {
   const { id } = useParams();
 
@@ -26,6 +28,9 @@ const ProductPage = () => {
       brand={product.brand}
         title={product.title}
         img={product.img}
+        img2={product.img2}
+        img3={product.img3}
+        img4={product.img4}
         price={product.price}
       />
       <Footer></Footer>
@@ -34,15 +39,19 @@ const ProductPage = () => {
 };
 
 
-const IndividualProductListing = ({brand, title, img, price, children }) => {
+const IndividualProductListing = ({brand, title, img, img2, img3, img4, price, children }) => {
   return (
     <article className="productListing">
-      <div>
+      <div className="productImgCar">
         <img alt={title} src={img} />
+
+        <img alt={title} src={img2} />
+
+        <img alt={title} src={img3} />
+        <img alt={title} src={img4} />
       </div>
       <div className="productDescription">
         <h2 className="airMaxTag">EXCLUSIVE</h2>
-       
         <h1>{brand}</h1>
         <h2>{title}</h2>
         <h6>Men's</h6>
@@ -52,6 +61,13 @@ const IndividualProductListing = ({brand, title, img, price, children }) => {
           <button className="wishlistButton">
             Wishlist <span class="heart">&hearts;</span>
           </button>
+        </div>
+        <div className="ad">
+          <h6>
+         Enjoy 20% off 
+        Spend over $145 on selected items to get a 20%
+            discount at checkout.
+          </h6>
         </div>
       </div>
       {children}

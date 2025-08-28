@@ -15,6 +15,7 @@ import arrowForward from "./images/arrowF.png";
 import arrowBackward from "./images/arrowB.png"
 
 import "./index.css";
+import "./productPage.css"
 
 const App = () => {
   const getProduct = (id) => {

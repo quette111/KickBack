@@ -1,0 +1,162 @@
+
+.airMaxTag {
+    background: linear-gradient(135deg, #ADE5CC 0%, #EEE6C2 18%, #EEE6C2 33%, #E8C1CE 57%, #B7A3D7 72%, #B6C9E0 94%);
+    width: fit-content;
+    padding: 2%;
+    font-size: x-small;
+position: inherit;
+
+  
+  }
+  .productListing > .productDescription {
+    align-self: flex-start; 
+  }
+  
+  .productListing {
+    display: flex;
+    padding-left: 7rem;
+    padding-right: 7rem;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 10%;
+    font-family: "Exo 2", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+    
+  }
+
+  .productDescription > :nth-child(1) {
+    margin-bottom: 7%;
+  
+  }
+  
+  .productDescription > :nth-child(2) {
+    margin-bottom: 1%;
+  }
+  
+  .productDescription > :nth-child(3) {
+    margin-bottom: 6%;
+
+  }
+
+  .productDescription > :nth-child(5) {
+    margin-bottom: 10%;
+  }
+  
+ 
+  
+  
+  .productListing img {
+   
+    background: rgba(211, 211, 211, 0.359);
+    
+    border-radius: 5px;
+   
+    height: 20rem;
+    position: relative;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    margin: 1%;
+    margin-top: 0%;
+  
+  }
+  
+  
+
+  
+  .sizeDropdownDiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2%;
+    border: lightgray solid 1px;
+    margin-top: 2%;
+    border-radius: 5px;
+    width: 25rem;
+    cursor: pointer;
+    height: 2.5rem;
+  }
+  
+  .sizeDropdownDiv:hover { 
+    background: rgba(223, 223, 223, 0.663);
+    
+  }
+  
+  
+  
+  select {
+    position: relative;
+    right: 0;
+    cursor: pointer;
+    
+    border: none;
+    background: none;
+    box-shadow: none;
+    outline: none;
+    
+    padding: 0;
+    margin: 0;
+    font: inherit; 
+    color: inherit;
+    line-height: normal;
+  }
+  
+  a { 
+     text-decoration: none;
+     color: inherit;
+  }
+  
+  .checkoutButtons{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 2.5rem;
+    
+   
+  }
+  
+  .addToBagButton {
+    width: 73%;
+    color: white;
+    background-color: hsl(0, 43%, 47%);
+    border: none;
+  }
+  .addToBagButton:hover {
+  opacity: 0.9;
+  }
+  
+  .wishlistButton {
+    width: 25%;
+    border: black solid 1px;
+  }
+  
+  .wishlistButton .heart {
+    display: inline-block; /* important so transform works */
+    transition: transform 0.3s ease;
+  }
+  
+  .wishlistButton:hover .heart {
+    transform: scale(1.5);
+    
+  }
+  
+  .addToBagButton, .wishlistButton {
+    border-radius: 5px;
+    
+  
+    cursor: pointer;
+    padding: 2%;
+    font-weight: bold;
+  }
+
+
+  .ad {
+ 
+    border-radius: 5px;
+    margin-top: 4%;
+    text-align: center;
+    padding: 3%;
+    background: rgba(211, 211, 211, 0.361);
+   
+  }
