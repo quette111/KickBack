@@ -47,10 +47,10 @@ body{
 .ShopNowWrapper {
 
 
-  display: flex; /* Ensure it's a flex container */
+  display: flex;
   flex-direction: column;
-  justify-content: center; /* Centers items vertically */
-  align-items: center; /* Centers items horizontally */
+  justify-content: center; 
+  align-items: center;
 
 }
 .ShopNowArea {
@@ -135,29 +135,29 @@ margin-bottom: 5rem;
 }
 
 .navbar li {
-  display: inline-block; /* needed for nicer clipping/spacing */
+  display: inline-block;
 
   cursor: pointer;
 
-  /* two layers: top = hover color, bottom = base color */
+  
   background-image:
-    linear-gradient(#c33, #c33),        /* hover color (red) */
-    linear-gradient(#4b2b20, #4b2b20);  /* base color (brown) */
+    linear-gradient(#c33, #c33),
+    linear-gradient(#4b2b20, #4b2b20);
 
-  background-size: 100% 0%, 100% 100%;  /* top layer hidden initially */
-  background-position: 0 100%, 0 0;     /* anchor top layer at bottom */
+  background-size: 100% 0%, 100% 100%;
+  background-position: 0 100%, 0 0;
   background-repeat: no-repeat;
 
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;                   /* show gradient through the text */
+  color: transparent;
 
   transition: background-size .28s ease;
 }
 
 .navbar li:hover,
 .navbar li:focus {
-  background-size: 100% 100%, 100% 100%; /* expand the top layer upward */
+  background-size: 100% 100%, 100% 100%;
 }
 
 /* reduced-motion fallback */
@@ -604,8 +604,12 @@ header ul li {
 }
 
 .productListing img {
+ 
   background: rgba(211, 211, 211, 0.782);
   padding: 2rem;
+  border-radius: 5px;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 
 }
 
@@ -613,6 +617,37 @@ header ul li {
 .productDescription {
   margin-right: 5%;
 
+}
+
+.sizeDropdownDiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2%;
+  border: lightgray solid 1px;
+  margin-top: 2%;
+  border-radius: 5px;
+  width: 15rem;
+  cursor: pointer;
+}
+
+select {
+  position: relative;
+  right: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  
+  border: none;
+  background: none;
+  box-shadow: none;
+  outline: none;
+  
+  padding: 0;
+  margin: 0;
+  font: inherit; 
+  color: inherit;
+  line-height: normal;
 }
 
 a { 

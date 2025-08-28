@@ -40,6 +40,7 @@ const IndividualProductListing = ({brand, title, img, price, children }) => {
       </div>
       <div className="productDescription">
     <h2 className="airMaxTag">EXCLUSIVE</h2>
+    <SizeDropdown></SizeDropdown>
       <h1>{brand}</h1>
       <h2>{title}</h2>
       <h6>Men's</h6>
@@ -48,5 +49,27 @@ const IndividualProductListing = ({brand, title, img, price, children }) => {
     </article>
   );
 };
+
+const SizeDropdown = () => {
+
+    return (
+      <div className="sizeDropdownDiv">
+        <label for="sizeDropdown">Size:</label>
+        <select id="sizeDropdown" name="sizeDropdown">
+          <option value="8">US Men's 8</option>
+          <option value="8.5">US Men's 8.5</option>
+          <option value="9">US Men's 9</option>
+          <option value="9.5">US Men's 9.5</option>
+          <option value="10">US Men's 10</option>
+          <option value="10.5">US Men's 10.5</option>
+          <option value="11">US Men's 11</option>
+          <option value="11.5">US Men's 11.5</option>
+          <option value="12">US Men's 12</option>
+          <option value="12.5">US Men's 12.5</option>
+          <option value="13">US Men's 13</option>
+        </select>
+      </div>
+    );
+}
 
 export default ProductPage;

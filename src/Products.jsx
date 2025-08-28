@@ -12,7 +12,7 @@ export const products = [
     title: "Air Max Plus",
     img: img6,
     id: 1,
-  }/*,
+  },
   {
     price: "$100.00",
     title: "adidas Originals Samba OG",
@@ -60,5 +60,5 @@ export const products = [
     title: "adidas Originals Handball Spezial",
     img: img5,
     id: 5,
-  },*/
+  },
 ];
