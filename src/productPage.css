@@ -23,6 +23,7 @@ position: inherit;
     font-optical-sizing: auto;
     font-weight: 800;
     font-style: normal;
+  
     
   }
 
@@ -121,9 +122,25 @@ position: inherit;
     color: white;
     background-color: hsl(0, 43%, 47%);
     border: none;
+    position: relative; 
+    overflow: hidden;  
   }
+  
+  .addToBagButton::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 0.5px solid white; 
+    transform: scale(0);
+    transition: transform 0.4s ease;
+  }
+  
+  .addToBagButton:hover::before {
+    transform: scale(1);
+  }
+  
   .addToBagButton:hover {
-  opacity: 0.9;
+  opacity: 1.5;
   }
   
   .wishlistButton {
@@ -132,7 +149,7 @@ position: inherit;
   }
   
   .wishlistButton .heart {
-    display: inline-block; /* important so transform works */
+    display: inline-block;
     transition: transform 0.3s ease;
   }
   
@@ -167,8 +184,33 @@ position: inherit;
     text-align: left;
     padding: 3%;
     background: rgba(211, 211, 211, 0.361);
+ 
   }
 
   .description {
-    font-size: small;
+    border-radius: 5px;
+    margin-bottom: 15rem;
+    text-align: center;
+    padding: 2%;
+    background: rgba(211, 211, 211, 0.102);
+    border: 1px solid rgb(164, 164, 164);
+    margin-right: 7rem;
+    margin-left: 7rem;
+    margin-top: 3rem;
+    
   }
+
+  .youMayLikeSection article {
+    border-radius: 0 !important;
+    background: linear-gradient(
+        to bottom,
+        rgba(211, 211, 211, 0.359) 0%, 
+        rgba(211, 211, 211, 0.359) 66.66%,
+        white 66.66%,
+        white 100% 
+      )!important; 
+  }
+ .youMayLikeSection h2 {
+    color: hsl(0, 43%, 47%);
+ }
+

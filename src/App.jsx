@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 
 import { products } from "./Products";
 import { genderData } from "./genderCardData";
@@ -18,7 +19,7 @@ import "./index.css";
 import "./productPage.css"
 
 const App = () => {
-  const getProduct = (id) => {
+ const getProduct = (id) => {
     const products = products.find((productItem) => productItem.id === id);
   };
 
@@ -140,7 +141,7 @@ const Hero = () => {
 };
 
 
-const FeaturesListHeader = () => {
+export const FeaturesListHeader = () => {
 
   const scroll = (e) => {
     if (e.currentTarget.className !== "scrollButton") return;
@@ -180,9 +181,21 @@ const FeaturesListHeader = () => {
     }
   };
 
+
+    const location = useLocation()
+    let displayText = '';
+    if(location.pathname === '/') {
+      displayText = "Top Pick's"
+    }else {
+      displayText = "You May Also Like"
+    }
+  
+
+ 
+
   return (
     <div className="header-row">
-      <h1>Top Picks</h1>
+      <h1>{displayText}</h1>
 
       <div role="group" aria-label="carousel navigation">
         <button

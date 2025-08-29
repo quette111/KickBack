@@ -3,7 +3,9 @@ import "./index.css";
 import { useParams } from "react-router-dom";
 import { products } from "./Products";
 import { Footer } from "./footer";
-
+import { FeaturesListHeader } from "./App";
+import { IndividualProductCard } from "./ProductCard";
+import { Link } from "react-router-dom";
 
 
 const ProductPage = () => {
@@ -41,50 +43,72 @@ const ProductPage = () => {
 
 
 const IndividualProductListing = ({brand, title, img, img2, img3, img4, description, price, children }) => {
+
+    const getProduct = (id) => {
+      const products = products.find((productItem) => productItem.id === id);
+    };
   return (
-    <article className="productListing">
-      <div className="productImgCar">
-        <img alt={title} src={img} />
+    <>
+      <article className="productListing">
+        <div className="productImgCar">
+          <img alt={title} src={img} />
 
-        <img alt={title} src={img2} />
+          <img alt={title} src={img2} />
 
-        <img alt={title} src={img3} />
-        <img alt={title} src={img4} />
+          <img alt={title} src={img3} />
+          <img alt={title} src={img4} />
+        </div>
+        <div className="productDescription">
+          <h2 className="airMaxTag">EXCLUSIVE</h2>
+          <h1>{brand}</h1>
+          <h2>{title}</h2>
+          <h6>Men's</h6>
+          <h4>{price}</h4> <SizeDropdown></SizeDropdown>
+          <div className="checkoutButtons">
+            <button className="addToBagButton">Add To Bag</button>
+            <button className="wishlistButton">
+              Wishlist <span class="heart">&hearts;</span>
+            </button>
+          </div>
+          <div className="ad">
+            <h6>
+              Enjoy 20% off Spend over $145 on selected items to get a 20%
+              discount at checkout.
+            </h6>
+          </div>
+          <div className="warningMessage">
+            <h5>
+              <strong>&#9888;&#65039; Important Message:</strong>
+              <br></br>
+              Your order is not finalized until you've received a shipment
+              confirmation email. To checkout faster, please
+              <a href="/signin"> Sign In</a>.
+            </h5>
+          </div>
+        </div>
+        {children}
+      </article>
+      <div className="description">
+        <h5>{description}</h5>
       </div>
-      <div className="productDescription">
-        <h2 className="airMaxTag">EXCLUSIVE</h2>
-        <h1>{brand}</h1>
-        <h2>{title}</h2>
-        <h6>Men's</h6>
-        <h4>{price}</h4> <SizeDropdown></SizeDropdown>
-        <div className="checkoutButtons">
-          <button className="addToBagButton">Add To Bag</button>
-          <button className="wishlistButton">
-            Wishlist <span class="heart">&hearts;</span>
-          </button>
-        </div>
-        <div className="ad">
-          <h6>
-            Enjoy 20% off Spend over $145 on selected items to get a 20%
-            discount at checkout.
-          </h6>
-        </div>
-        <div className="warningMessage">
-          <h5>
-            <strong>&#9888;&#65039; Important Message:</strong>
-            <br></br>
-            Your order is not finalized until you've received a shipment
-            confirmation email. To checkout faster, please
-            <a href="/signin"> Sign In</a>.
-          </h5>
-        </div>
-        {/*
-        <div className="description">
-          <h6>{description}</h6>
-        </div>*/}
-      </div>
-      {children}
-    </article>
+      <FeaturesListHeader />
+
+      <section className="productList youMayLikeSection">
+        {/*<EventExamples></EventExamples>*/}
+        {products.map((productItem, index) => {
+          return (
+            <Link to={`/productPage/${productItem.id}`}>
+              <IndividualProductCard
+                key={productItem.id}
+                {...productItem}
+                getProduct={getProduct}
+                index={index}
+              ></IndividualProductCard>
+            </Link>
+          );
+        })}
+      </section>
+    </>
   );
 };
 

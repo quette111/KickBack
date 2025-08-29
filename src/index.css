@@ -434,6 +434,7 @@ h1{
 display: flex;
 align-items: center;
 justify-content: space-around;
+margin-top: 10rem;
 }
 
 .createdBy h1 {
@@ -543,6 +544,7 @@ header ul li {
   justify-content: space-between;
   align-items: center;
   padding-right: 10%;
+  margin-bottom: 5rem;
 }
 
 .hero h1 {
@@ -599,6 +601,7 @@ header ul li {
   justify-content: space-between;
   margin-left: 5rem;
   margin-right: 5%;
+
 }
 
 .header-row [role="group"] {
