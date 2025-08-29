@@ -25,13 +25,14 @@ const ProductPage = () => {
       </div>
 
       <IndividualProductListing
-      brand={product.brand}
+        brand={product.brand}
         title={product.title}
         img={product.img}
         img2={product.img2}
         img3={product.img3}
         img4={product.img4}
         price={product.price}
+        description={product.description}
       />
       <Footer></Footer>
     </>
@@ -39,7 +40,7 @@ const ProductPage = () => {
 };
 
 
-const IndividualProductListing = ({brand, title, img, img2, img3, img4, price, children }) => {
+const IndividualProductListing = ({brand, title, img, img2, img3, img4, description, price, children }) => {
   return (
     <article className="productListing">
       <div className="productImgCar">
@@ -64,11 +65,23 @@ const IndividualProductListing = ({brand, title, img, img2, img3, img4, price, c
         </div>
         <div className="ad">
           <h6>
-         Enjoy 20% off 
-        Spend over $145 on selected items to get a 20%
+            Enjoy 20% off Spend over $145 on selected items to get a 20%
             discount at checkout.
           </h6>
         </div>
+        <div className="warningMessage">
+          <h5>
+            <strong>&#9888;&#65039; Important Message:</strong>
+            <br></br>
+            Your order is not finalized until you've received a shipment
+            confirmation email. To checkout faster, please
+            <a href="/signin"> Sign In</a>.
+          </h5>
+        </div>
+        {/*
+        <div className="description">
+          <h6>{description}</h6>
+        </div>*/}
       </div>
       {children}
     </article>

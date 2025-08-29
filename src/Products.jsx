@@ -20,6 +20,7 @@ export const products = [
     img2: airMax2,
     img3: airMax3,
     img4: airMax4,
+    description: "The Nike Air Max Plus brings iconic late-’90s style with its bold design lines and visible Air cushioning. Built for comfort and attitude, this classic sneaker delivers lightweight support, durable materials, and the signature Tuned Air units for all-day performance. Perfect for streetwear or casual rotation",
     id: 1,
   },
   {
