@@ -1,0 +1,41 @@
+.shoppingCartPage {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.summarySection h1,h2, h3, h4, h5, button {
+    margin: 20px 0;
+}
+
+.shoppingCartPage div {
+    margin-top: 5rem;
+    height: 25rem;
+    width: 20rem;
+}
+
+.bagSection {
+display: flex;
+flex-direction: column;
+}
+
+.summarySection {
+    display: flex;
+    flex-direction: column;
+}
+
+hr {
+    border: none; 
+    border-top: 1px solid #ccc;
+
+}
+
+span {
+    display: flex;
+    justify-content: space-between;
+}
+
+.checkoutBtn {
+    width: 100%;
+}

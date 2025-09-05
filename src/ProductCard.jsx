@@ -1,14 +1,14 @@
-export const IndividualProductCard = ({ title, img, price, children, getProduct, id, index }) => {
+export const IndividualProductCard = ({ title, images, price, children, getProduct, id, index }) => {
 
     const displayTitle = (() => console.log(title))
 
     const getSingleBook = () => {
         getProduct(id)
     }
-
+console.log('hello', title)
     return (
       <article className="productCard">
-        <img alt={title} src={img}></img>
+        <img alt={title} src={images?.[0]}></img>
         <h2>{title}</h2>
         <h6>Men's</h6>
         <h4>{price}</h4>

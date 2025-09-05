@@ -1,45 +1,46 @@
-import mensLogo from '../src/images/mensLogo.png'
-import womens from '../src/images/WomenModel.jpg'
-import mens from "../src/images/MaleModel.jpg";
-import kids from "../src/images/kidsModel.jpg"
-import other from "../src/images/otherSneakers.jpg";
+//import mensLogo from "../images/mensLogo.png";
 
-import necklace from "../src/images/necklace.jpg"
-import jacket from "../src/images/jacket.jpg";
+
+
+
+
+
 export const genderData = [
   {
     category: "Men's",
-    genderImg: mens,
+    link: "mens",
+    genderImg: "/images/MaleModel.jpg",
     id: 1,
   },
   {
     category: "Women's",
-    genderImg: womens,
+    link: "womens",
+    genderImg: "/images/WomenModel.jpg",
     id: 2,
   },
   {
     category: "Kid's",
-    genderImg: kids,
+    link: "kids",
+    genderImg: "/images/kidsModel.jpg",
     id: 3,
   },
   {
     category: "Other",
-    genderImg: other,
+    genderImg: "/images/otherSneakers.jpg",
+    link: "other",
     id: 4,
   },
 ];
 
-
 export const ShopNowData = [
   {
     category: "Shop Thrifted Clothing",
-    shopNowImg: jacket,
+    shopNowImg: "/images/jacket.jpg",
     id: 1,
   },
   {
     category: "Shop Fresh Jewelry",
-    shopNowImg: necklace,
+    shopNowImg: "/images/necklace.jpg",
     id: 2,
-  }
+  },
 ];
-  

@@ -270,14 +270,14 @@ text-align: center;
 
 @media (max-width: 768px) {
   .genderArea {
-    grid-template-columns: repeat(2, 1fr); /* force 2 per row */
+    grid-template-columns: repeat(2, 1fr); 
   }
 }
 
 /* tiny screens */
 @media (max-width: 480px) {
   .genderArea {
-    grid-template-columns: repeat(2, 1fr); /* still 2 per row */
+    grid-template-columns: repeat(2, 1fr); 
   }
 }
 
@@ -467,6 +467,15 @@ border: lightgray solid 1px;;
   cursor: pointer;
 }
 
+.accountIcon {
+cursor: pointer;
+}
+
+.cartIcon {
+  cursor: pointer;
+}
+
+
 header ul {
   display: flex;
   flex-wrap: wrap;  
@@ -606,7 +615,7 @@ header ul li {
 
 .header-row [role="group"] {
   display: flex;
-  gap: 0.5rem; /* space between buttons */
+  gap: 0.5rem;
 }
 
 .header-row button {
@@ -671,4 +680,26 @@ header ul li {
   text-align: left;
   margin-left: 5rem;
   font-size:x-large
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+  margin-top: 20rem;
+  border: 4px solid #f3f3f3; 
+  border-top: 4px solid #3498db; 
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-left: 50%;
+  animation: spin 2s linear infinite;
+}
+
+
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

@@ -6,14 +6,14 @@ import { Footer } from "./footer";
 import { FeaturesListHeader } from "./App";
 import { IndividualProductCard } from "./ProductCard";
 import { Link } from "react-router-dom";
-
+import './globals.css'
 
 const ProductPage = () => {
-  const { id } = useParams();
+  const { _id } = useParams();
 
 
   const product = products.find(
-    (productItem) => productItem.id.toString() === id
+    (productItem) => productItem._id === _id
   );
 
   if (!product) {
@@ -45,7 +45,7 @@ const ProductPage = () => {
 const IndividualProductListing = ({brand, title, img, img2, img3, img4, description, price, children }) => {
 
     const getProduct = (id) => {
-      const products = products.find((productItem) => productItem.id === id);
+      const products = products.find((productItem) => productItem._id === id);
     };
   return (
     <>
@@ -97,9 +97,9 @@ const IndividualProductListing = ({brand, title, img, img2, img3, img4, descript
         {/*<EventExamples></EventExamples>*/}
         {products.map((productItem, index) => {
           return (
-            <Link to={`/productPage/${productItem.id}`}>
+            <Link to={`/productPage/${productItem._id}`}>
               <IndividualProductCard
-                key={productItem.id}
+                key={productItem._id}
                 {...productItem}
                 getProduct={getProduct}
                 index={index}

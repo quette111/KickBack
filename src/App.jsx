@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 
-import { products } from "./Products";
+//import { products } from "./Products";
 import { genderData } from "./genderCardData";
 import { IndividualProductCard } from "./ProductCard";
 import { GenderCard } from "./genderCards";
@@ -10,54 +10,83 @@ import { Footer } from "./footer";
 import { ShopNow } from "./genderCards";
 import { ShopNowData } from "./genderCardData";
 
-import redirect from "./images/redirect.png";
-import nike from "./images/heroSneaker.png";
-import arrowForward from "./images/arrowF.png";
-import arrowBackward from "./images/arrowB.png"
+//import redirect from "../images/redirect.png";
+
+import { useEffect, useState } from "react";
+
+
 
 import "./index.css";
-import "./productPage.css"
+import "./productPage.css";
+
+
+const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:33000";
 
 const App = () => {
- const getProduct = (id) => {
-    const products = products.find((productItem) => productItem.id === id);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await fetch(`${API_BASE}/api/products`);
+        if (!res.ok) throw new Error(`Fetch failed: ${res.status}`);
+        const data = await res.json();
+        setProducts(data || []);
+      } catch (err) {
+        console.error("Failed to fetch products:", err);
+        setProducts([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProducts();
+  }, []);
+
+
+  const getProduct = (id) => {
+    if (!id) return null;
+    return products.find(
+      (productItem) =>
+        productItem.id === id ||
+        productItem._id === id ||
+        String(productItem.id) === String(id)
+    );
   };
 
+
   const getGender = (id) => {
-    const genderData = genderData.find(
-      (genderOption) => genderOption.id === id
-    );
+    return genderData.find((g) => g.id === id) || null;
   };
 
   const getShopNow = (id) => {
-    const getShopNowData = getShopNowData.find(
-      (shopNowOption) =>shopNowOption.id === id
-    );
+    return ShopNowData.find((s) => s.id === id) || null;
   };
 
-  ;
+  if (loading) return <div className="loading"></div>;
 
   return (
     <>
       <div className="headerContainer">
-        <Header></Header>
+        <Header />
       </div>
 
       <Hero />
-
       <FeaturesListHeader />
 
       <section className="productList">
-        {/*<EventExamples></EventExamples>*/}
         {products.map((productItem, index) => {
+          const idForRoute = productItem.id ?? productItem._id;
+         
+          console.log(productItem)
           return (
-            <Link to={`/productPage/${productItem.id}`}>
+            <Link to={`/productPage/${idForRoute}`} key={idForRoute}>
               <IndividualProductCard
-                key={productItem.id}
                 {...productItem}
-                getProduct={getProduct}
                 index={index}
-              ></IndividualProductCard>
+             
+                getProduct={() => getProduct(idForRoute)}
+              />
             </Link>
           );
         })}
@@ -65,58 +94,33 @@ const App = () => {
 
       <h1 className="componentCaption">Shop By Category</h1>
       <section className="genderArea">
-        {genderData.map((genderData, index) => {
-          return (
-            <GenderCard
-              key={genderData.id}
-              {...genderData}
-              getGender={getGender}
-              index={index}
-            ></GenderCard>
-          );
-        })}
+        {genderData.map((g, index) => (
+          <GenderCard
+            key={g.id}
+            {...g}
+            getGender={() => getGender(g.id)}
+            index={index}
+          />
+        ))}
       </section>
 
       <section className="ShopNowArea">
-        {ShopNowData.map((ShopNowData, index) => {
-          return (
-            <ShopNow
-              key={ShopNowData.id}
-              {...ShopNowData}
-              getShopNow={getShopNow}
-              index={index}
-            ></ShopNow>
-          );
-        })}
+        {ShopNowData.map((s, index) => (
+          <ShopNow
+            key={s.id}
+            {...s}
+            getShopNow={() => getShopNow(s.id)}
+            index={index}
+          />
+        ))}
       </section>
 
-      <Footer></Footer>
+      <Footer />
     </>
   );
 };
 
-const EventExamples = () => {
-  return (
-    <section>
-      <form>
-        <h2>Typical Form</h2>
-        <input
-          type="text"
-          name="example"
-          onChange={(e) => console.log(e.target.value)}
-          style={{ margin: "1rem 0" }}
-        ></input>
-      </form>
-      <button
-        onClick={() => {
-          console.log("click me");
-        }}
-      >
-        click me
-      </button>
-    </section>
-  );
-};
+
 
 const Hero = () => {
   return (
@@ -126,23 +130,25 @@ const Hero = () => {
           Hot kicks,<br></br> cooler prices
         </h1>
         <h3>
-          Stay fresh this year with the hottest<br></br> trends and must-have styles
+          Stay fresh this year with the hottest<br></br> trends and must-have
+          styles
         </h3>
-   
-          <button className="headerRedirect">Shop The Top Picks</button>
-      
+
+        <button className="headerRedirect">Shop The Top Picks</button>
       </div>
 
-      <img alt="nike" src={nike} className="heroShoeImg"></img>
+      <img
+        alt="nike"
+        src="/images/heroSneaker.png"
+        className="heroShoeImg"
+      ></img>
       {/*<img></img>
         <img></img>*/}
     </section>
   );
 };
 
-
 export const FeaturesListHeader = () => {
-
   const scroll = (e) => {
     if (e.currentTarget.className !== "scrollButton") return;
 
@@ -155,7 +161,6 @@ export const FeaturesListHeader = () => {
     let currentIndex;
 
     if (e.currentTarget.id === "scrollRight") {
-
       currentIndex = children.findIndex(
         (child) => child.offsetLeft >= scrollLeft
       );
@@ -181,17 +186,13 @@ export const FeaturesListHeader = () => {
     }
   };
 
-
-    const location = useLocation()
-    let displayText = '';
-    if(location.pathname === '/') {
-      displayText = "Top Pick's"
-    }else {
-      displayText = "You May Also Like"
-    }
-  
-
- 
+  const location = useLocation();
+  let displayText = "";
+  if (location.pathname === "/") {
+    displayText = "Top Pick's";
+  } else {
+    displayText = "You May Also Like";
+  }
 
   return (
     <div className="header-row">
@@ -204,7 +205,7 @@ export const FeaturesListHeader = () => {
           onClick={scroll}
           aria-label="Previous"
         >
-          <img alt="" src={arrowBackward} />
+          <img alt="back" src="/images/arrowB.png" />
         </button>
         <button
           className="scrollButton"
@@ -212,20 +213,11 @@ export const FeaturesListHeader = () => {
           onClick={scroll}
           aria-label="Next"
         >
-          <img alt="" src={arrowForward} />
+          <img alt="" src="/images/arrowF.png" />
         </button>
       </div>
     </div>
   );
-}
-
-
-
-
-/*
-function Greeting() {
-    return React.createElement('h2', {}, 'hello ')
-}
-*/
+};
 
 export default App;
