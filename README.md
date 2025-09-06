@@ -8,21 +8,17 @@
 
 A MERN stack web application built with **Vite** for fast frontend development. This project is currently in development. KickBack is a website for selling lightly worn shoes. 
 
-## Features (Planned)
+## Features in development
 - Serverless architecture via AWS integration paired with DyamoDB
 - User authentication with JWT/ OAuth 2.0 
 - Admin control features
-- MongoDB database integration
-- Shopping cart / checkout
-- Responsive UI with React + Vite
-- API routes using Express
-- CRUD functionality for core resources
 
 ## Tech Stack
 
 - **Frontend:** React, Vite, CSS
 - **Backend:** Node.js, Express
-- **Database:** MongoDB, Mongoose > Will migrate to SQL after MVP is complete
+- **Database:** MongoDB (planned: DynamoDB for serverless)
+- **Hosting / Cloud:** AWS (Lambda, S3, API Gateway)
 - **Auth:** JSON Web Tokens (JWT), OAuth 2.0 
 
 **NOTE: CURRENT PRODUCT LISTINGS ARE NOT MY OWN AND WILL NOT BE USED IN PRODUCTION, WILL BE REPLACED**
