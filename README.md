@@ -9,7 +9,7 @@
 A MERN stack web application built with **Vite** for fast frontend development. This project is currently in development. KickBack is a website for selling lightly worn shoes. 
 
 ## Features (Planned)
-
+- Serverless architecture via AWS integration paired with DyamoDB
 - User authentication with JWT/ OAuth 2.0 
 - Admin control features
 - MongoDB database integration
