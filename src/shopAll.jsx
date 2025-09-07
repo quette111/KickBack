@@ -15,7 +15,7 @@ import { useEffect, useState } from "react";
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:33000";
 
 
- 
+ export let displayText = "";
 
 const ShopAll = () => {
 
@@ -53,17 +53,33 @@ const ShopAll = () => {
       (productItem) => productItem.category === category
     );
 
-    if (!getProduct) {
+
+    const filterByGender = products.filter((item)=> {
+      console.log(item.category);
+
+      console.log(`this is item.cat: ......${item.category}.... ....this is cat: ...${category}...`)
+     return item.category === category;
+    })
+
+    console.log(filterByGender)
+
+    if (loading) return <div className="loading"></div>;
+
+    if (filterByGender.length === 0) {
     
         return <NotFound></NotFound>
     }
 
     const location = useLocation();
-    let displayText = "";
+    
     if (location.pathname === "/shopAll/mens") {
       displayText = "Men's";
-    } else {
+    } else if (location.pathname === "/shopAll/womens"){
       displayText = "Women's";
+    } else if (location.pathname === "/shopAll/kids") {
+      displayText = "Kid's";
+    } else {
+      displayText = "Other";
     }
 
     return (
@@ -83,7 +99,7 @@ const ShopAll = () => {
 
           <section className="productList youMayLikeSection shopAll">
             {/*<EventExamples></EventExamples>*/}
-            {products.map((productItem, index) => {
+            {filterByGender.map((productItem, index) => {
               return (
                 <Link to={`/productPage/${productItem.id}`}>
                   <IndividualProductCard
