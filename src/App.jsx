@@ -2,23 +2,20 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 //import { products } from "./Products";
-import { genderData } from "./genderCardData";
-import { IndividualProductCard } from "./ProductCard";
-import { GenderCard } from "./genderCards";
-import { Header } from "./header";
-import { Footer } from "./footer";
-import { ShopNow } from "./genderCards";
-import { ShopNowData } from "./genderCardData";
+import { genderData } from "./genderCards/genderCardData";
+import { IndividualProductCard } from "./products/ProductCard";
+import { GenderCard } from "./genderCards/genderCards";
+import { Header } from "./headerfooter/header";
+import { Footer } from "./headerfooter/footer";
+import { ShopNow } from "./genderCards/genderCards";
+import { ShopNowData } from "./genderCards/genderCardData";
 
 //import redirect from "../images/redirect.png";
 
 import { useEffect, useState } from "react";
 
-
-
 import "./index.css";
-import "./productPage.css";
-
+import "./products/productPage.css";
 
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:33000";
 
@@ -43,7 +40,6 @@ const App = () => {
     fetchProducts();
   }, []);
 
-
   const getProduct = (id) => {
     if (!id) return null;
     return products.find(
@@ -53,7 +49,6 @@ const App = () => {
         String(productItem.id) === String(id)
     );
   };
-
 
   const getGender = (id) => {
     return genderData.find((g) => g.id === id) || null;
@@ -77,14 +72,13 @@ const App = () => {
       <section className="productList">
         {products.map((productItem, index) => {
           const idForRoute = productItem.id ?? productItem._id;
-         
-          console.log(productItem)
+
+          console.log(productItem);
           return (
             <Link to={`/productPage/${idForRoute}`} key={idForRoute}>
               <IndividualProductCard
                 {...productItem}
                 index={index}
-             
                 getProduct={() => getProduct(idForRoute)}
               />
             </Link>
@@ -119,8 +113,6 @@ const App = () => {
     </>
   );
 };
-
-
 
 const Hero = () => {
   return (

@@ -1,6 +1,6 @@
 
 //import searchIcon from "../images/searchIcon.svg";
-import "./index.css";
+import "../index.css";
 import { Link } from "react-router-dom";
 export const Footer = () => {
   return (

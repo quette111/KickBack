@@ -1,28 +1,25 @@
-import { Footer } from "./footer";
-import { Header } from "./header";
+import { Footer } from "../headerfooter/footer";
+import { Header } from "../headerfooter/header";
 import "./shoppingCart.css";
-import './globals.css'
+import "../globals.css";
 
 export const ShoppingCart = () => {
-
   let cart = null;
   let subtotal = null;
   let total = null;
 
-
-  let subtotalDisplay
-  let displayText
-let totalDisplay;
-
+  let subtotalDisplay;
+  let displayText;
+  let totalDisplay;
 
   if (cart === null) {
-    displayText = "There are no items in your bag."
+    displayText = "There are no items in your bag.";
   } else {
     displayText = cart;
   }
 
   if (subtotal === null) {
-    subtotalDisplay = '';
+    subtotalDisplay = "";
   } else {
     subtotalDisplay = subtotal;
   }
@@ -32,8 +29,6 @@ let totalDisplay;
   } else {
     totalDisplay = total;
   }
-
-
 
   return (
     <>

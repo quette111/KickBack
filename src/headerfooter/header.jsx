@@ -3,7 +3,7 @@
 
 
 
-import "./index.css";
+import "../index.css";
 import { Link } from "react-router-dom";
 
 export const Header = () => {
