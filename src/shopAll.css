@@ -1,0 +1,29 @@
+.filterContainer {
+    width: 24rem;
+}
+.shopAllWrapper {
+    display: flex;
+    width: 100%;
+  }
+  
+  .shopAll {
+    display: grid;
+    grid-auto-flow: row; 
+    grid-template-rows: repeat(3, 1fr); 
+    gap: 1.5rem;
+    width: 100%;
+ 
+  }
+  
+  .shopAll * {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 20rem;
+    box-sizing: border-box;    
+    overflow: hidden;         
+  }
+  
+
+
+  

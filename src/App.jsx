@@ -1,82 +1,223 @@
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-import { products } from "./Products";
+//import { products } from "./Products";
+import { genderData } from "./genderCardData";
 import { IndividualProductCard } from "./ProductCard";
+import { GenderCard } from "./genderCards";
 import { Header } from "./header";
+import { Footer } from "./footer";
+import { ShopNow } from "./genderCards";
+import { ShopNowData } from "./genderCardData";
 
-import nike from "./images/heroSneaker.png";
+//import redirect from "../images/redirect.png";
+
+import { useEffect, useState } from "react";
+
+
 
 import "./index.css";
+import "./productPage.css";
+
+
+const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:33000";
 
 const App = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await fetch(`${API_BASE}/api/products`);
+        if (!res.ok) throw new Error(`Fetch failed: ${res.status}`);
+        const data = await res.json();
+        setProducts(data || []);
+      } catch (err) {
+        console.error("Failed to fetch products:", err);
+        setProducts([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProducts();
+  }, []);
+
+
   const getProduct = (id) => {
-    const products = products.find((productItem) => productItem.id === id);
+    if (!id) return null;
+    return products.find(
+      (productItem) =>
+        productItem.id === id ||
+        productItem._id === id ||
+        String(productItem.id) === String(id)
+    );
   };
+
+
+  const getGender = (id) => {
+    return genderData.find((g) => g.id === id) || null;
+  };
+
+  const getShopNow = (id) => {
+    return ShopNowData.find((s) => s.id === id) || null;
+  };
+
+  if (loading) return <div className="loading"></div>;
 
   return (
     <>
       <div className="headerContainer">
-        <Header></Header>
+        <Header />
       </div>
 
       <Hero />
+      <FeaturesListHeader />
 
       <section className="productList">
-        {/*<EventExamples></EventExamples>*/}
         {products.map((productItem, index) => {
+          const idForRoute = productItem.id ?? productItem._id;
+         
+          console.log(productItem)
           return (
-            <Link to={`/productPage/${productItem.id}`}>
+            <Link to={`/productPage/${idForRoute}`} key={idForRoute}>
               <IndividualProductCard
-                key={productItem.id}
                 {...productItem}
-                getProduct={getProduct}
                 index={index}
-              ></IndividualProductCard>
+             
+                getProduct={() => getProduct(idForRoute)}
+              />
             </Link>
           );
         })}
       </section>
+
+      <h1 className="componentCaption">Shop By Category</h1>
+      <section className="genderArea">
+        {genderData.map((g, index) => (
+          <GenderCard
+            key={g.id}
+            {...g}
+            getGender={() => getGender(g.id)}
+            index={index}
+          />
+        ))}
+      </section>
+
+      <section className="ShopNowArea">
+        {ShopNowData.map((s, index) => (
+          <ShopNow
+            key={s.id}
+            {...s}
+            getShopNow={() => getShopNow(s.id)}
+            index={index}
+          />
+        ))}
+      </section>
+
+      <Footer />
     </>
   );
 };
 
-const EventExamples = () => {
-  return (
-    <section>
-      <form>
-        <h2>Typical Form</h2>
-        <input
-          type="text"
-          name="example"
-          onChange={(e) => console.log(e.target.value)}
-          style={{ margin: "1rem 0" }}
-        ></input>
-      </form>
-      <button
-        onClick={() => {
-          console.log("click me");
-        }}
-      >
-        click me
-      </button>
-    </section>
-  );
-};
+
 
 const Hero = () => {
   return (
     <section className="hero">
-      <img alt="nike" src={nike} className="heroShoeImg"></img>
+      <div>
+        <h1>
+          Hot kicks,<br></br> cooler prices
+        </h1>
+        <h3>
+          Stay fresh this year with the hottest<br></br> trends and must-have
+          styles
+        </h3>
+
+        <button className="headerRedirect">Shop The Top Picks</button>
+      </div>
+
+      <img
+        alt="nike"
+        src="/images/heroSneaker.png"
+        className="heroShoeImg"
+      ></img>
       {/*<img></img>
         <img></img>*/}
     </section>
   );
 };
 
-/*
-function Greeting() {
-    return React.createElement('h2', {}, 'hello ')
-}
-*/
+export const FeaturesListHeader = () => {
+  const scroll = (e) => {
+    if (e.currentTarget.className !== "scrollButton") return;
+
+    const productList = document.querySelector(".productList");
+    if (!productList) return;
+
+    const children = Array.from(productList.children);
+    const scrollLeft = productList.scrollLeft;
+
+    let currentIndex;
+
+    if (e.currentTarget.id === "scrollRight") {
+      currentIndex = children.findIndex(
+        (child) => child.offsetLeft >= scrollLeft
+      );
+      const targetIndex = Math.min(currentIndex + 1, children.length - 1);
+
+      children[targetIndex]?.scrollIntoView({
+        behavior: "smooth",
+        inline: "start",
+        block: "nearest",
+      });
+    } else {
+      currentIndex =
+        children.findLastIndex(
+          (child) => child.offsetLeft + child.offsetWidth <= scrollLeft + 1
+        ) ?? 0;
+      const targetIndex = Math.max(currentIndex, 0);
+
+      children[targetIndex]?.scrollIntoView({
+        behavior: "smooth",
+        inline: "start",
+        block: "nearest",
+      });
+    }
+  };
+
+  const location = useLocation();
+  let displayText = "";
+  if (location.pathname === "/") {
+    displayText = "Top Pick's";
+  } else {
+    displayText = "You May Also Like";
+  }
+
+  return (
+    <div className="header-row">
+      <h1>{displayText}</h1>
+
+      <div role="group" aria-label="carousel navigation">
+        <button
+          className="scrollButton"
+          id="scrollLeft"
+          onClick={scroll}
+          aria-label="Previous"
+        >
+          <img alt="back" src="/images/arrowB.png" />
+        </button>
+        <button
+          className="scrollButton"
+          id="scrollRight"
+          onClick={scroll}
+          aria-label="Next"
+        >
+          <img alt="" src="/images/arrowF.png" />
+        </button>
+      </div>
+    </div>
+  );
+};
 
 export default App;

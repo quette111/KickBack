@@ -1,26 +1,62 @@
-import logo from "./images/logo.png";
-import searchIcon from "./images/searchIcon.svg";
+
+
+
+
+
 import "./index.css";
 import { Link } from "react-router-dom";
+
 export const Header = () => {
   return (
     <header className="navbar">
-      <img src={logo} alt="" className="headerLogo" />
+      <Link to={"/"}>
+        <img src="/images/headerLogo.png" alt="" className="headerLogo" />
+      </Link>
 
       <ul>
+        <Link to={"/"}>
+          {" "}
+          <li>Home</li>{" "}
+        </Link>
 
-         <Link to={'/'}> <li>Home</li> </Link>
-        <li>Products</li>
-        <li>Stuff</li>
-        <li>More</li>
+        <Link to={"/shopAll/mens"}>
+          <li>Men's</li>
+        </Link>
+
+        <Link to={"/shopAll/womens"}>
+          <li>Women's</li>
+        </Link>
+
+        <Link to={"/shopAll/kids"}>
+          <li>Kid's</li>
+        </Link>
+
+        <Link to={"/shopAll/jewelry"}>
+          <li>Jewelry</li>
+        </Link>
       </ul>
 
       <div className="search-box">
         <input type="text" placeholder="Search" />
-        <img src={searchIcon} alt="" />
+        <img src="/images/searchIcon.svg" alt="search" />
       </div>
 
-      <img src="" alt="" className="toggle-icon" />
+      <div className="navbarRight">
+        <img
+          /*onClick={openAccount}*/ className="accountIcon"
+          alt="account"
+          src="/images/account.svg"
+        ></img>
+        <Link to={"/cart"}>
+          <img
+            className="cartIcon"
+            alt="shopping cart"
+            src="/images/shoppingCart.svg"
+          ></img>
+        </Link>
+      </div>
+
+      {/*<img src="" alt="" className="toggle-icon" />*/}
     </header>
   );
 };
