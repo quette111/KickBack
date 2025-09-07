@@ -1,20 +1,17 @@
-import { Header } from "./header";
-import "./index.css";
+import { Header } from "../headerfooter/header";
+import "../index.css";
 import { useParams } from "react-router-dom";
 import { products } from "./Products";
-import { Footer } from "./footer";
-import { FeaturesListHeader } from "./App";
+import { Footer } from "../headerfooter/footer";
+import { FeaturesListHeader } from "../App";
 import { IndividualProductCard } from "./ProductCard";
 import { Link } from "react-router-dom";
-import './globals.css'
+import "../globals.css";
 
 const ProductPage = () => {
   const { _id } = useParams();
 
-
-  const product = products.find(
-    (productItem) => productItem._id === _id
-  );
+  const product = products.find((productItem) => productItem._id === _id);
 
   if (!product) {
     return <h2>Product not found</h2>;
@@ -41,12 +38,20 @@ const ProductPage = () => {
   );
 };
 
-
-const IndividualProductListing = ({brand, title, img, img2, img3, img4, description, price, children }) => {
-
-    const getProduct = (id) => {
-      const products = products.find((productItem) => productItem._id === id);
-    };
+const IndividualProductListing = ({
+  brand,
+  title,
+  img,
+  img2,
+  img3,
+  img4,
+  description,
+  price,
+  children,
+}) => {
+  const getProduct = (id) => {
+    const products = products.find((productItem) => productItem._id === id);
+  };
   return (
     <>
       <article className="productListing">
@@ -113,25 +118,24 @@ const IndividualProductListing = ({brand, title, img, img2, img3, img4, descript
 };
 
 const SizeDropdown = () => {
-
-    return (
-      <div className="sizeDropdownDiv">
-        <label for="sizeDropdown">Size:</label>
-        <select id="sizeDropdown" name="sizeDropdown">
-          <option value="8">US Men's 8</option>
-          <option value="8.5">US Men's 8.5</option>
-          <option value="9">US Men's 9</option>
-          <option value="9.5">US Men's 9.5</option>
-          <option value="10">US Men's 10</option>
-          <option value="10.5">US Men's 10.5</option>
-          <option value="11">US Men's 11</option>
-          <option value="11.5">US Men's 11.5</option>
-          <option value="12">US Men's 12</option>
-          <option value="12.5">US Men's 12.5</option>
-          <option value="13">US Men's 13</option>
-        </select>
-      </div>
-    );
-}
+  return (
+    <div className="sizeDropdownDiv">
+      <label for="sizeDropdown">Size:</label>
+      <select id="sizeDropdown" name="sizeDropdown">
+        <option value="8">US Men's 8</option>
+        <option value="8.5">US Men's 8.5</option>
+        <option value="9">US Men's 9</option>
+        <option value="9.5">US Men's 9.5</option>
+        <option value="10">US Men's 10</option>
+        <option value="10.5">US Men's 10.5</option>
+        <option value="11">US Men's 11</option>
+        <option value="11.5">US Men's 11.5</option>
+        <option value="12">US Men's 12</option>
+        <option value="12.5">US Men's 12.5</option>
+        <option value="13">US Men's 13</option>
+      </select>
+    </div>
+  );
+};
 
 export default ProductPage;
