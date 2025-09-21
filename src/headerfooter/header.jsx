@@ -1,12 +1,13 @@
 
 
-
-
-
 import "../index.css";
 import { Link } from "react-router-dom";
 
 export const Header = () => {
+
+
+
+
   return (
     <header className="navbar">
       <Link to={"/"}>
@@ -55,7 +56,6 @@ export const Header = () => {
           ></img>
         </Link>
       </div>
-
       {/*<img src="" alt="" className="toggle-icon" />*/}
     </header>
   );

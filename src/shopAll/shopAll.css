@@ -1,18 +1,66 @@
-.filterContainer {
-    width: 24rem;
+.filterContainer, .pickupLocation {
+    width: 15rem;
+    margin-right: 5rem;
+    border: 1px solid rgb(182, 182, 182);
+
+border-radius: 5px;
+
+}
+
+.filterContainer div {
+height: 4.5rem;
+
+  width: 100%;
+  text-align: center;
+  display: flex;
+ align-items: center;
+ justify-content: center;
+ cursor: pointer;
+ border-radius: 5px;
+ 
+
+}
+
+.filterContainer div:nth-child(1) {
+  border-bottom: 1px solid rgb(182, 182, 182);
+  border-radius: 0;
+}
+.filterContainer div:nth-child(2) {
+  border-bottom: 1px solid rgb(182, 182, 182);
+  border-radius: 0;
+}
+
+.filterContainer div:hover {
+background: rgba(200, 200, 200, 0.549);
 }
 .shopAllWrapper {
     display: flex;
     width: 100%;
+    padding: 5rem;
   }
   
+  .genderLabel {
+    text-align: left;
+    margin-top: 2.5rem;
+    margin-left: 31.5rem;
+    
+  }
+
+  .genderLabel p {
+    font-size: 1.2rem;
+  }
+  .genderLabel h1 { 
+    font-size: 2.5rem;
+     font-weight:800}
+
   .shopAll {
     display: grid;
     grid-auto-flow: row; 
     grid-template-rows: repeat(3, 1fr); 
     gap: 1.5rem;
     width: 100%;
- 
+    border-left: 1px solid rgb(182, 182, 182);
+    padding-left: 5rem;
   }
   
   .shopAll * {
@@ -26,4 +74,21 @@
   
 
 
-  
+  .kicksImg{
+    overflow: hidden;
+    justify-content: center;
+    cursor: pointer;
+    width: 100%;
+    max-width: 380px;   
+    display: flex;
+    margin-top: 10rem;
+    align-self: center;
+    justify-content: center; 
+    aspect-ratio: 3.5 / 5; 
+margin-right: 5rem;
+  }
+
+  .kiks2{
+    width: 100%;
+max-width: 580px; 
+  }

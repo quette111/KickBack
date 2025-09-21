@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
+
 
 //import { products } from "./Products";
 import { genderData } from "./genderCards/genderCardData";
@@ -19,37 +19,8 @@ import "./products/productPage.css";
 
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:33000";
 
-const App = () => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const res = await fetch(`${API_BASE}/api/products`);
-        if (!res.ok) throw new Error(`Fetch failed: ${res.status}`);
-        const data = await res.json();
-        setProducts(data || []);
-      } catch (err) {
-        console.error("Failed to fetch products:", err);
-        setProducts([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchProducts();
-  }, []);
-
-  const getProduct = (id) => {
-    if (!id) return null;
-    return products.find(
-      (productItem) =>
-        productItem.id === id ||
-        productItem._id === id ||
-        String(productItem.id) === String(id)
-    );
-  };
-
+const App = () => { 
+  
   const getGender = (id) => {
     return genderData.find((g) => g.id === id) || null;
   };
@@ -58,7 +29,7 @@ const App = () => {
     return ShopNowData.find((s) => s.id === id) || null;
   };
 
-  if (loading) return <div className="loading"></div>;
+
 
   return (
     <>
@@ -69,22 +40,7 @@ const App = () => {
       <Hero />
       <FeaturesListHeader />
 
-      <section className="productList">
-        {products.map((productItem, index) => {
-          const idForRoute = productItem.id ?? productItem._id;
-
-          console.log(productItem);
-          return (
-            <Link to={`/productPage/${idForRoute}`} key={idForRoute}>
-              <IndividualProductCard
-                {...productItem}
-                index={index}
-                getProduct={() => getProduct(idForRoute)}
-              />
-            </Link>
-          );
-        })}
-      </section>
+   <ProductsList></ProductsList>
 
       <h1 className="componentCaption">Shop By Category</h1>
       <section className="genderArea">
@@ -211,5 +167,87 @@ export const FeaturesListHeader = () => {
     </div>
   );
 };
+
+export const ProductsList = () => {
+
+  
+  const [loading, setLoading] = useState(true);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await fetch(`${API_BASE}/api/products`);
+        if (!res.ok) throw new Error(`Fetch failed: ${res.status}`);
+        const data = await res.json();
+        setProducts(data || []);
+      } catch (err) {
+        console.error("Failed to fetch products:", err);
+        setProducts([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProducts();
+  }, []);
+
+  const { category } = useParams();
+    console.log(category)
+
+  const filterByGender = products.filter((item) => {
+ 
+if(window.location.pathname === '/') {
+  return
+}
+    console.log(item.category);
+
+    console.log(
+      `this is item.cat: ......${item.category}.... ....this is cat: ...${category}...`
+    );
+    return item.category === category;
+  });
+
+  const getProduct = (id) => {
+    if (!id) return null;
+    return products.find(
+      (productItem) =>
+        productItem.id === id ||
+        productItem._id === id ||
+        String(productItem.id) === String(id)
+    );
+  };
+
+  const location = useLocation()
+  const currentPath = location.pathname;
+  const specificPageClass =
+    currentPath.includes('productPage') === true ? "youMayLikeSection" : "";
+    const specificPageClassTwo =
+      currentPath.includes("shopAll") === true
+        ? "youMayLikeSection shopAll"
+        : "";
+
+  if (loading) return <div className="loading"></div>;
+
+  
+  return (
+  <section className={`productList ${specificPageClass} ${specificPageClassTwo}`}>
+    {products.map((productItem, index) => {
+      const idForRoute = productItem.id ?? productItem._id;
+
+      console.log(productItem);
+      return (
+        <Link to={`/productPage/${idForRoute}`} key={idForRoute}>
+          <IndividualProductCard
+            {...productItem}
+            index={index}
+            getProduct={() => getProduct(idForRoute)}
+            filterByGender={filterByGender}
+          />
+        </Link>
+      );
+    })}
+  </section>
+  )
+}
 
 export default App;

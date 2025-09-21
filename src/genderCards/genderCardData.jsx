@@ -1,10 +1,3 @@
-//import mensLogo from "../images/mensLogo.png";
-
-
-
-
-
-
 export const genderData = [
   {
     category: "Men's",

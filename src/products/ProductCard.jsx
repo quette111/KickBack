@@ -20,7 +20,7 @@ export const IndividualProductCard = ({
       <img alt={title} src={images?.[0]}></img>
       <h2>{title}</h2>
       <h6>{displayText}</h6>
-      <h4>{price}</h4>
+      <h4>${price}</h4>
       <h4 className="displayCardEffect exclude">View Product</h4>
       {/*<button onClick={getSingleBook}>display title</button>*/}
       {/*<span className="index">{`#${index + 1}`}</span>*/}

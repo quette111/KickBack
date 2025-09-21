@@ -24,43 +24,64 @@ const products = [
     stock: 1
   },
   {
-    title: "adidas Originals Samba OG",
-    brand: "adidas",
-    price: 100,
+    title: "Air Force One (University of Missouri Edition)",
+    brand: "Nike",
+    price: 150,
     category: "mens",
     id: 2,
-    description:"VERY DOPE",
-    images: ["/images/samba.webp", "/images/samba.webp", "/images/samba.webp", "/images/samba.webp"],
+    description: "A classic Nike Air Force One reimagined by a talented artist with a bold University of Missouri theme. Featuring custom-painted details, this one-of-a-kind pair blends timeless style with school spirit.",
+    images: ["/images/miz1.png", "/images/miz2.png", "/images/miz3.png", "/images/miz4.png"],
     stock: 1
   },
+
   {
-    title: "Jordan Retro 3 OG",
-    brand: "Jordan",
-    price: 100,
-    category: "kids",
+    title: "2002R",
+    brand: "New Balance",
+    price: 144.99,
+    category: "mens",
     id: 3,
-    description: "VERY DOPE",
-    images: ["/images/jr3.webp", "/images/jr3.webp", "/images/jr3.webp", "/images/jr3.webp" ],
+    description: "A modern take on running-inspired style, the New Balance 2002R offers premium comfort and cushioning with a sleek, versatile silhouette perfect for everyday wear.",
+    images: ["/images/nb1.png", "/images/nb2.png", "/images/nb3.png", "/images/nb4.png" ],
     stock: 1
   },
   {
-    title: "Nike Air Force 1 Low '24",
-    brand: "Nike",
-    price: 120,
+    title: "Cloudeclipse",
+    brand: "ON",
+    price: 125,
     category: "mens",
     id: 4,
-    description: "VERY DOPE",
-    images: ["/images/af1.webp", "/images/af1.webp", "/images/af1.webp", "/images/af1.webp"],
+    description: "Engineered for long-distance comfort, the On Cloudeclipse delivers plush cushioning and responsive energy return with every step, ideal for runners who crave smooth support.",
+    images: ["/images/ON1.png", "/images/ON2.png", "/images/ON3.png", "/images/ON4.png"],
     stock: 1
   },
   {
-    title: "adidas Originals Handball Spezial",
-    brand: "adidas",
-    price: 110,
+    title: "Cloudgo",
+    brand: "ON",
+    price: 105,
     category: "mens",
     id: 5,
-    description: "VERY DOPE",
-    images: ["/images/aOH.webp", "/images/aOH.webp", "/images/aOH.webp", "/images/aOH.webp"],
+    description: "Lightweight and versatile, the On Cloudgo brings next-level comfort for your daily runs or all-day wear, featuring CloudTec® cushioning for a soft yet springy ride.",
+    images: ["/images/Onn1.png", "/images/Onn2.png", "/images/Onn3.png", "/images/Onn4.png"],
+    stock: 1
+  },
+  {
+    title: "Dunk Low Retro",
+    brand: "Nike",
+    price: 96.97,
+    category: "mens",
+    id: 6,
+    description: "A timeless streetwear staple, the Nike Dunk Low Retro combines heritage basketball style with modern comfort, making it a go-to for everyday wear.",
+    images: ["/images/dunk1.png", "/images/dunk2.png", "/images/dunk34.png", "/dunk2.png"],
+    stock: 1
+  },
+  {
+    title: "Gyakusou Zoom Pegasus 36",
+    brand: "Nike X Undercover",
+    price: 160,
+    category: "mens",
+    id: 7,
+    description: "A collaboration between Nike and Undercover’s Gyakusou line, this Zoom Pegasus 36 fuses performance running technology with avant-garde style, offering a bold and functional look.",
+    images: ["/images/nik1.png", "/images/nik2.png", "/images/nik3.png", "/nik4.png"],
     stock: 1
   }
 ];

@@ -9,10 +9,11 @@
     margin: 20px 0;
 }
 
-.shoppingCartPage div {
+.pickupLocation, .bagSection, .summarySection {
     margin-top: 5rem;
     height: 25rem;
     width: 20rem;
+    overflow-y: scroll;
 }
 
 .bagSection {
@@ -39,3 +40,102 @@ span {
 .checkoutBtn {
     width: 100%;
 }
+
+
+
+
+.bagList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem; 
+
+  }
+
+
+  
+
+  .bagListItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 1rem;
+    border: 1px solid #e2e2e2;
+    border-radius: 8px;
+    background-color: #fff;
+ 
+  }
+  
+
+  .bagItemInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .bagItemName {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    word-break: break-word;
+  }
+  
+  .bagItemQty {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+
+  .bagItemPrice {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    min-width: 80px;
+    gap: 0.25rem;
+  }
+  
+  .bagItemPrice > div {
+    font-size: 0.95rem;
+    color: #333;
+  }
+  
+ 
+  
+.delete-btn {
+  background-color: #c03a2bf0;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 6px;
+  font-size: 2px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.delete-btn:hover {
+  background-color: #e74c3c;
+}
+
+.delete-btn:active {
+  transform: scale(0.95);
+}
+
+.delete-btn:focus {
+  outline: none;
+  
+}
+  @media (max-width: 480px) {
+    .bagListItem {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .bagItemPrice {
+      align-items: flex-start;
+    }
+  }
+  

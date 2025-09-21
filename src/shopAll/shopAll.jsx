@@ -1,20 +1,22 @@
 import { Footer } from "../headerfooter/footer";
 import { Header } from "../headerfooter/header";
 import { useParams } from "react-router-dom";
-import { products } from "../products/Products";
+
 import { Link } from "react-router-dom";
 import { IndividualProductCard } from "../products/ProductCard";
 import { NotFound } from "../notfound";
 import { useLocation } from "react-router-dom";
-
+import { ProductsList } from "../App";
 import "./shopAll.css";
 
 import { useEffect, useState } from "react";
+import { LocationComponent } from "../IPCall/locationComponent";
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:33000";
 
 export let displayText = "";
 
 const ShopAll = () => {
+
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -41,22 +43,13 @@ const ShopAll = () => {
     (productItem) => productItem.category === category
   );
 
-  const filterByGender = products.filter((item) => {
-    console.log(item.category);
 
-    console.log(
-      `this is item.cat: ......${item.category}.... ....this is cat: ...${category}...`
-    );
-    return item.category === category;
-  });
 
-  console.log(filterByGender);
+
 
   if (loading) return <div className="loading"></div>;
 
-  if (filterByGender.length === 0) {
-    return <NotFound></NotFound>;
-  }
+
 
   const location = useLocation();
 
@@ -74,7 +67,7 @@ const ShopAll = () => {
     <>
       <Header></Header>
 
-      <header>
+      <header className="genderLabel">
         <h1>{displayText}</h1>
         <p>
           Shop the latest collection of {displayText} clothing and accessories{" "}
@@ -83,22 +76,8 @@ const ShopAll = () => {
       <article className="shopAllWrapper">
         <FilterSideBar></FilterSideBar>
 
-        <section className="productList youMayLikeSection shopAll">
-          {/*<EventExamples></EventExamples>*/}
-          {filterByGender.map((productItem, index) => {
-            return (
-              <Link to={`/productPage/${productItem.id}`}>
-                <IndividualProductCard
-                  key={productItem.id}
-                  {...productItem}
-                  getProduct={getProduct}
-                  index={index}
-                  category={category}
-                ></IndividualProductCard>
-              </Link>
-            );
-          })}
-        </section>
+<ProductsList></ProductsList>
+       
       </article>
       <Footer></Footer>
     </>
@@ -119,38 +98,46 @@ const FilterSideBar = () => {
     });
   };
 
+
+  console.log(`helloooo quette ${location?.city}`)
+
   return (
-    <div className="filterContainer">
-      <div>
-        <label>Brand:</label>
-        <select name="brand" value={filters.brand} onChange={handleChange}>
-          <option value="">All</option>
-          <option value="nike">Nike</option>
-          <option value="adidas">Adidas</option>
-          <option value="puma">Puma</option>
-        </select>
+    <section className="filterSection">
+      <div className="filterContainer">
+        <div>
+          <label>Brand:</label>
+          <select name="brand" value={filters.brand} onChange={handleChange}>
+            <option value="">All</option>
+            <option value="nike">Nike</option>
+            <option value="adidas">Adidas</option>
+            <option value="puma">Puma</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Color:</label>
+          <select name="color" value={filters.color} onChange={handleChange}>
+            <option value="">All</option>
+            <option value="black">Black</option>
+            <option value="white">White</option>
+            <option value="red">Red</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Price:</label>
+          <select name="price" value={filters.price} onChange={handleChange}>
+            <option value="">All</option>
+            <option value="0-50">$0 - $50</option>
+            <option value="50-100">$50 - $100</option>
+            <option value="100-200">$100 - $200</option>
+          </select>
+        </div>
       </div>
 
-      <div>
-        <label>Color:</label>
-        <select name="color" value={filters.color} onChange={handleChange}>
-          <option value="">All</option>
-          <option value="black">Black</option>
-          <option value="white">White</option>
-          <option value="red">Red</option>
-        </select>
-      </div>
-
-      <div>
-        <label>Price:</label>
-        <select name="price" value={filters.price} onChange={handleChange}>
-          <option value="">All</option>
-          <option value="0-50">$0 - $50</option>
-          <option value="50-100">$50 - $100</option>
-          <option value="100-200">$100 - $200</option>
-        </select>
-      </div>
-    </div>
+      <LocationComponent></LocationComponent>
+      
+    </section>
   );
 };
 export default ShopAll;
