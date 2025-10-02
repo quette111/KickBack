@@ -71,7 +71,7 @@ const products = [
     category: "mens",
     id: 6,
     description: "A timeless streetwear staple, the Nike Dunk Low Retro combines heritage basketball style with modern comfort, making it a go-to for everyday wear.",
-    images: ["/images/dunk1.png", "/images/dunk2.png", "/images/dunk34.png", "/dunk2.png"],
+    images: ["/images/dunk1.png", "/images/dunk2.png", "/images/dunk34.png", "/images/dunk2.png"],
     stock: 1
   },
   {

@@ -10,7 +10,7 @@ import { ProductsList } from "../App";
 import "./shopAll.css";
 
 import { useEffect, useState } from "react";
-import { LocationComponent } from "../IPCall/locationComponent";
+/*import { LocationComponent } from "../IPCall/locationComponent";*/
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:33000";
 
 export let displayText = "";
@@ -135,7 +135,7 @@ const FilterSideBar = () => {
         </div>
       </div>
 
-      <LocationComponent></LocationComponent>
+ { /*    <LocationComponent></LocationComponent>*/}
       
     </section>
   );

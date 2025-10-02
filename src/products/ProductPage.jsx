@@ -13,7 +13,7 @@ import { useEffect, useState, useMemo, useCallback } from "react";
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:33000";
 
 import "../globals.css";
-import { LocationComponent } from "../IPCall/locationComponent";
+/* import { LocationComponent } from "../IPCall/locationComponent";*/
 
 export const ProductPage = () => {
   const params = useParams();
@@ -98,6 +98,11 @@ export const ProductPage = () => {
   }, [effectiveId, products, loading]);
 
   const handleAddToCart = useCallback(() => {
+      if (document.querySelector(".sizeDropdown").value === 0) {
+        window.alert("nonigga");
+        console.log("huh");
+        return
+      }
     if (productItem) addToCart(productItem);
   }, [productItem]);
 
@@ -182,7 +187,8 @@ const IndividualProductListing = ({
 
   const handleAddToCart = () => {
     if (document.querySelector(".sizeDropdown").value === 0) {
-      document.querySelector(".addToBagButton").return;
+      window.alert('nonigga')
+      console.log('huh')
     }
 
     addToCart(product);

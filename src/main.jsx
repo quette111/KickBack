@@ -2,6 +2,7 @@ import "./index.css";
 import App from "./App.jsx";
 import ProductPage from "./products/ProductPage.jsx";
 import ShopAll from "./shopAll/shopAll.jsx";
+
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -14,6 +15,7 @@ const router = createBrowserRouter([
   { path: "/productPage/:id", element: <ProductPage /> },
   { path: "/shopAll/:category", element: <ShopAll /> },
   { path: "/cart", element: <ShoppingCart /> },
+
 
   /*,
   { path: "/products", element: <Products /> },
