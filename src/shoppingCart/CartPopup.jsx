@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import './cartPopup.css'
 
-export default function CartPopup({ message, onClose, shoe, gender, price }) {
+export default function CartPopup({ message, onClose, shoe, gender, price, size }) {
 
 
   useEffect(() => {
@@ -9,7 +9,7 @@ export default function CartPopup({ message, onClose, shoe, gender, price }) {
 
 
       
-      localStorage.setItem("cart:", JSON.stringify({ shoe, gender, price }));
+      localStorage.setItem("cart:", JSON.stringify({ shoe, gender, price, size }));
 
 
       onClose(); 
