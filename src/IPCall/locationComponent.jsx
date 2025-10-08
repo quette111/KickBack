@@ -3,7 +3,7 @@ import "leaflet/dist/leaflet.css";
 import { getLocationByIP } from "../IPCall/IPCall";
 import { useEffect, useState } from 'react';
 import MapComponent from './MapComponent';
-/*
+
 export const LocationComponent = () => {
 
   const [location, setLoc] = useState(null);
@@ -38,4 +38,3 @@ return (
   </>
 );
 }
-*/

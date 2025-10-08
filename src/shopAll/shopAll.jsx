@@ -60,7 +60,7 @@ const ShopAll = () => {
   } else if (location.pathname === "/shopAll/kids") {
     displayText = "Kid's";
   } else {
-    displayText = "Other";
+    displayText = "Jewelry";
   }
 
   return (
@@ -109,18 +109,10 @@ const FilterSideBar = () => {
           <select name="brand" value={filters.brand} onChange={handleChange}>
             <option value="">All</option>
             <option value="nike">Nike</option>
-            <option value="adidas">Adidas</option>
-            <option value="puma">Puma</option>
-          </select>
-        </div>
-
-        <div>
-          <label>Color:</label>
-          <select name="color" value={filters.color} onChange={handleChange}>
-            <option value="">All</option>
-            <option value="black">Black</option>
-            <option value="white">White</option>
-            <option value="red">Red</option>
+            <option value="NB">New Balance</option>
+            <option value="ON">ON</option>
+            <option value="Hoka">Hoka</option>
+            <option value="Brooks">Brooks</option>
           </select>
         </div>
 
@@ -128,15 +120,14 @@ const FilterSideBar = () => {
           <label>Price:</label>
           <select name="price" value={filters.price} onChange={handleChange}>
             <option value="">All</option>
-            <option value="0-50">$0 - $50</option>
-            <option value="50-100">$50 - $100</option>
-            <option value="100-200">$100 - $200</option>
+            <option value="0-50"> $100 or less </option>
+            <option value="50-100">$101 - $149</option>
+            <option value="100-200">$150+</option>
           </select>
         </div>
       </div>
 
- { /*    <LocationComponent></LocationComponent>*/}
-      
+      {/*    <LocationComponent></LocationComponent>*/}
     </section>
   );
 };
