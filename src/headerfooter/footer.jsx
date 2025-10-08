@@ -2,6 +2,7 @@
 //import searchIcon from "../images/searchIcon.svg";
 import "../index.css";
 import { Link } from "react-router-dom";
+import './footer.css'
 export const Footer = () => {
   return (
     <footer className="navbar footer">
@@ -15,10 +16,15 @@ export const Footer = () => {
         <h1>Created By Marquette Hanson</h1>
       </div>
 
-      <div className="search-box">
-        <form>
-          <input placeholder="Contact Us" type="text"></input>
-        </form>
+      <div>
+        <a href="https://github.com/quette111" target="_blank"
+            rel="noopener noreferrer">
+          <img className="github"
+            src="/images/github.png"
+            alt="github"
+    
+          ></img>
+        </a>
       </div>
     </footer>
   );

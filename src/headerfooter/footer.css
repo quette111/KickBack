@@ -1,0 +1,19 @@
+.createdBy {
+font-family: "Great Vibes", cursive;
+  font-size: 1.2rem;
+  color: #333;
+  text-align: center;
+  opacity: 0.8;
+  letter-spacing: 1px;
+
+
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.github {
+    transition: transform 0.3s ease;
+}
+.createdBy:hover, .github:hover {
+  color: #000;
+  transform: scale(1.05);
+}

@@ -170,9 +170,10 @@ export const FeaturesListHeader = () => {
 
 export const ProductsList = () => {
 
-  
+    const { category } = useParams();
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
+const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -191,21 +192,10 @@ export const ProductsList = () => {
     fetchProducts();
   }, []);
 
-  const { category } = useParams();
-    console.log(category)
 
-  const filterByGender = products.filter((item) => {
- 
-if(window.location.pathname === '/') {
-  return
-}
-    console.log(item.category);
+    console.log(` AYOO ${category}`)
 
-    console.log(
-      `this is item.cat: ......${item.category}.... ....this is cat: ...${category}...`
-    );
-    return item.category === category;
-  });
+
 
   const getProduct = (id) => {
     if (!id) return null;
@@ -216,6 +206,17 @@ if(window.location.pathname === '/') {
         String(productItem.id) === String(id)
     );
   };
+useEffect(() => {
+  if (!category) {
+    setFilteredProducts(products);
+    return;
+  }
+
+  const filtered = products.filter(
+    (item) => item.category.toLowerCase() === category.toLowerCase()
+  );
+  setFilteredProducts(filtered);
+}, [category, products]);
 
   const location = useLocation()
   const currentPath = location.pathname;
@@ -226,12 +227,13 @@ if(window.location.pathname === '/') {
         ? "youMayLikeSection shopAll"
         : "";
 
+
   if (loading) return <div className="loading"></div>;
 
-  
+
   return (
   <section className={`productList ${specificPageClass} ${specificPageClassTwo}`}>
-    {products.map((productItem, index) => {
+    {filteredProducts.map((productItem, index) => {
       const idForRoute = productItem.id ?? productItem._id;
 
       console.log(productItem);
@@ -241,7 +243,7 @@ if(window.location.pathname === '/') {
             {...productItem}
             index={index}
             getProduct={() => getProduct(idForRoute)}
-            filterByGender={filterByGender}
+  
           />
         </Link>
       );

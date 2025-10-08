@@ -3,7 +3,7 @@ import { Header } from "../headerfooter/header";
 import { Link } from "react-router-dom";
 import "./shoppingCart.css";
 import "../globals.css";
-/*import { LocationComponent } from "../IPCall/locationComponent";*/
+import { LocationComponent } from "../IPCall/locationComponent";
 import deleteBtn  from "/images/deleteBtn.png";
 export const ShoppingCart = () => {
 
@@ -202,8 +202,7 @@ localStorage.setItem("cart:", JSON.stringify(parsed.splice(index, 1)));
             <button className="addToBagButton checkoutBtn">Checkout</button>
           </Link>
         </div>
-
-        {/*    <LocationComponent />*/}
+        <LocationComponent />
         <div className="shoppingRight">
           <div className="bagSection">
             <h1>Bag</h1>
