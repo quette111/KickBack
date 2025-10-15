@@ -16,7 +16,7 @@ import cookieParser from 'cookie-parser';
 import productsRouter from './routers/products.js';
 import appRoutes from './routers/api.js';
 import loginRoutes from './routers/loginRoutes.js';
-
+import routerStripe from './routers/stripe.js'
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -26,15 +26,15 @@ const __dirname = path.dirname(__filename);
 app.use(helmet());
 //({ origin: 'http://localhost:8080', credentials: true }));
 //app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 100 }));
-
-
+app.use(cors());
+/*
 app.use(cors({
   origin: process.env.FRONTEND_ORIGIN || 'http://localhost:5173',
   // credentials: true     // uncomment 4cookies/auth
 }));
-app.use(cors()); // allows everything
+ // allows everything
 app.options('*', cors()); // enable preflight for all routes
-
+*/
 app.use(express.urlencoded({ extended: true }));
 app.use('/images', express.static(path.join(__dirname, 'public/images')));
 
@@ -48,7 +48,7 @@ app.use((req, res, next) => {
   next();
 });
 
-
+app.use(routerStripe)
 app.use('/api/v1/users', appRoutes);
 app.use('/api/v1/login', loginRoutes)
 app.use('/api/products', productsRouter);

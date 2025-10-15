@@ -61,7 +61,8 @@ margin-top: 10%;
     list-style: none;
     padding: 0;
     margin: 0;
-
+    height: 17.5rem;
+  overflow-y: scroll;
     display: flex;
     flex-direction: column;
     gap: 0.1rem; 
