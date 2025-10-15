@@ -237,7 +237,7 @@ const IndividualProductListing = ({
           </div>
           <div className="ad">
             <h6>
-              Enjoy 20% off Spend over $145 on selected items to get a 20%
+              Enjoy 20% off<br></br>Spend over $145 on selected items to get a 20%
               discount at checkout.
             </h6>
           </div>
@@ -298,17 +298,17 @@ const SizeDropdown = () => {
         name="sizeDropdown"
       >
         <option value="0">Please select size</option>
-        <option value="8">US Men's 8</option>
-        <option value="8.5">US Men's 8.5</option>
-        <option value="9">US Men's 9</option>
-        <option value="9.5">US Men's 9.5</option>
-        <option value="10">US Men's 10</option>
-        <option value="10.5">US Men's 10.5</option>
-        <option value="11">US Men's 11</option>
-        <option value="11.5">US Men's 11.5</option>
-        <option value="12">US Men's 12</option>
-        <option value="12.5">US Men's 12.5</option>
-        <option value="13">US Men's 13</option>
+        <option value="8">US {displayText} 8</option>
+        <option value="8.5">US  {displayText} 8.5</option>
+        <option value="9">US  {displayText} 9</option>
+        <option value="9.5">US  {displayText} 9.5</option>
+        <option value="10">US  {displayText} 10</option>
+        <option value="10.5">US  {displayText} 10.5</option>
+        <option value="11">US  {displayText} 11</option>
+        <option value="11.5">US  {displayText} 11.5</option>
+        <option value="12">US  {displayText} 12</option>
+        <option value="12.5">US  {displayText} 12.5</option>
+        <option value="13">US  {displayText} 13</option>
       </select>
     </div>
   );

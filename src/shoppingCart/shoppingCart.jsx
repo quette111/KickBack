@@ -5,8 +5,12 @@ import "./shoppingCart.css";
 import "../globals.css";
 import { LocationComponent } from "../IPCall/locationComponent";
 import deleteBtn  from "/images/deleteBtn.png";
-export const ShoppingCart = () => {
+import { loadStripe } from "@stripe/stripe-js";
+const STRIPE_PUB_KEY = import.meta.env.VITE_STRIPE_PUB_KEY;
+const apiURL = import.meta.env.VITE_API_BASE;
 
+export const ShoppingCart = () => {
+console.log(STRIPE_PUB_KEY);
   let raw = null;
   let parsed = null;
   try {
@@ -22,7 +26,7 @@ export const ShoppingCart = () => {
 
 
   const parsePrice = (price) => {
-    if (price == null) return 0;
+    if (price == null) return 0;``
     if (typeof price === "number") return price;
     const cleaned = String(price).replace(/[^0-9.-]+/g, "");
     const num = Number(cleaned);
@@ -56,10 +60,12 @@ console.log(parsed)
 const handleDelete = (index) => {
   console.log(index)
   console.log(parsed);
-parsed.splice(index, 1)
-console.log(parsed)
-console.log(JSON.stringify(parsed.splice(index, 1)));
-localStorage.setItem("cart:", JSON.stringify(parsed.splice(index, 1)));
+  parsed.splice(index, 1);
+
+  console.log(parsed);
+
+
+  localStorage.setItem("cart:", JSON.stringify(parsed));
 
 }
 
@@ -74,7 +80,7 @@ localStorage.setItem("cart:", JSON.stringify(parsed.splice(index, 1)));
         const gender = item?.category ? `${item.category}` : "";
         const price = parsePrice(item?.price);
         const qty = Number(item?.qty ?? 1);
-       const image = item.images[0]
+       const image = item.images[parseInt(0)]
         const lineTotal = price * qty;
         const index = cartArray.indexOf(item)
 
@@ -104,6 +110,35 @@ localStorage.setItem("cart:", JSON.stringify(parsed.splice(index, 1)));
     </ul>
   );
 
+console.log(parsed)
+const processCheckout = async () => {
+  const inputs = document.querySelectorAll("#checkoutForm input");
+  let hasEmpty = false;
+  inputs.forEach((input) => {
+    if (!input.value.trim()) {
+      hasEmpty = true;
+    }
+  });
+
+  if (hasEmpty) {
+    alert("Please fill out all fields.");
+  } else {
+    console.log("Checkout processing...");
+  }
+
+   const body = { products: parsed };
+
+   const response = await fetch(`${apiURL}/create-checkout-session`, {
+     method: "POST",
+     headers: { "Content-Type": "application/json" },
+     body: JSON.stringify(body),
+   });
+
+   const session = await response.json();
+
+
+   window.location.href = session.url;
+};
 
   const subtotalDisplay = fmtCurrency(subtotal);
   const taxDisplay = fmtCurrency(taxNumber);
@@ -114,7 +149,7 @@ localStorage.setItem("cart:", JSON.stringify(parsed.splice(index, 1)));
       <Header />
       <article className="shoppingCartPage">
         <div className="shoppingLeft">
-          <form>
+          <form id="checkoutForm">
             <label>
               Contact
               <input type="text" placeholder="Email"></input>
@@ -198,11 +233,21 @@ localStorage.setItem("cart:", JSON.stringify(parsed.splice(index, 1)));
               <input type="text" placeholder="Phone"></input>
             </label>
           </form>
-          <Link to={"/checkout"}>
-            <button className="addToBagButton checkoutBtn">Checkout</button>
-          </Link>
+          {/* <Link to={"/checkout"}>*/}
+          <button
+      
+            onClick={processCheckout}
+            className="addToBagButton checkoutBtn"
+          >
+            Continue to Secure Payment
+          </button>
+          {/* </Link>*/}
         </div>
-        <LocationComponent />
+         <LocationComponent />
+
+
+
+
         <div className="shoppingRight">
           <div className="bagSection">
             <h1>Bag</h1>

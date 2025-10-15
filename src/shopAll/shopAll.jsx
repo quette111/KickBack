@@ -70,7 +70,7 @@ const ShopAll = () => {
       <header className="genderLabel">
         <h1>{displayText}</h1>
         <p>
-          Shop the latest collection of {displayText} clothing and accessories{" "}
+          Shop the latest collection of {displayText} shoes{" "}
         </p>
       </header>
       <article className="shopAllWrapper">
